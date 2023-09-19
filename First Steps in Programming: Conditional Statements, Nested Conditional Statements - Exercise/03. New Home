@@ -1,0 +1,97 @@
+using System.Diagnostics;
+
+namespace New_Home
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double roses = 5.0;
+            double dahlias = 3.8;
+            double tulips = 2.8;
+            double narcissus = 3;
+            double gladiolus = 2.5;
+
+            string tipeFlowers = Console.ReadLine();
+            int flowersCount = int.Parse(Console.ReadLine());   
+            int budget = int.Parse(Console.ReadLine());
+
+           
+            double price = 0;
+            double totalPrice = 0;
+            double discount = 0;
+
+            switch (tipeFlowers)
+            {
+                case "Roses": {
+                        if (flowersCount > 80)
+                        {
+                            price = flowersCount * roses;
+                            totalPrice = price * 0.90;
+                        }
+                        else { 
+                            price = flowersCount * roses;
+                            totalPrice = price;
+                        }
+                    };break;
+                case "Dahlias": {
+                        if (flowersCount > 90)
+                        {
+                            price = flowersCount * dahlias;
+                            totalPrice = price * 0.85;
+                        }
+                        else
+                        {
+                            price = flowersCount * dahlias;
+                            totalPrice = price;
+                        }
+                    };break;
+                case "Tulips": {
+                        if (flowersCount > 80)
+                        {
+
+                            price = flowersCount * tulips;
+                            totalPrice = price * 0.85;
+                        }
+                        else
+                        {
+                            price = flowersCount * tulips;
+                            totalPrice = price;
+                        }
+                    };break;
+                case "Narcissus": {
+                        if (flowersCount < 120)
+                        {
+                            price = flowersCount * narcissus;
+                            totalPrice = price * 1.15;
+                        }
+                        else
+                        {
+                            price = flowersCount * narcissus;
+                            totalPrice = price;
+                        }
+                    };break;
+                case "Gladiolus": {
+                        if (flowersCount < 80)
+                        {
+                            price = flowersCount * gladiolus;
+                            totalPrice = price * 1.20;
+                        }
+                        else
+                        {
+                            price = flowersCount * gladiolus;
+                            totalPrice = price;
+                        }
+                    };break;
+            }
+
+            if (budget >= totalPrice)
+            {
+                Console.WriteLine("Hey, you have a great garden with {0} {1} and {2:f2} leva left.", flowersCount, tipeFlowers, budget - totalPrice);
+            }
+            else {
+                Console.WriteLine("Not enough money, you need {0:f2} leva more.", totalPrice - budget);
+            }
+        }
+    }
+}
