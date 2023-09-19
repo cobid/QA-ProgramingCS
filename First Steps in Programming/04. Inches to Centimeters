@@ -1,0 +1,12 @@
+namespace namespaceTextReading
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double inches = double.Parse(Console.ReadLine());
+            double convertToCantimeters = inches * 2.54;
+            Console.WriteLine(convertToCantimeters);
+        }
+    }
+}
