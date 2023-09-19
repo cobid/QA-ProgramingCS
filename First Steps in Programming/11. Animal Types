@@ -1,0 +1,23 @@
+namespace Animal_Types
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string inputAnimal = Console.ReadLine();
+            if (inputAnimal == "dog" || inputAnimal == "crocodile" ||
+                inputAnimal == "tortoise" || inputAnimal == "snake")
+            {
+                switch (inputAnimal)
+                {
+                    case "dog": Console.WriteLine("mammal"); break;
+                    case "crocodile": Console.WriteLine("reptile"); break;
+                    case "tortoise": Console.WriteLine("reptile"); break;
+                    case "snake": Console.WriteLine("reptile"); break;
+                }
+            }
+            else { Console.WriteLine("unknown");
+            }
+        }
+    }
+}
