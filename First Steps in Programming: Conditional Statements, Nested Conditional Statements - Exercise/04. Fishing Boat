@@ -1,0 +1,114 @@
+namespace Fishing_Boat
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int totalBuget = int.Parse(Console.ReadLine()); 
+            string season = Console.ReadLine(); 
+            int peopleCount = int.Parse(Console.ReadLine());
+
+            int priceBoat = 0;
+            double price = 0;
+            double totalPrice = 0;
+
+            switch (season)
+            {
+                case "Spring":
+                    {
+                        priceBoat = 3000;
+                        if (peopleCount <= 6)
+                        {
+                            price = priceBoat * 0.9;
+                        }
+                        else if (peopleCount >= 7 && peopleCount <= 11)
+                        {
+                            price = priceBoat * 0.85;
+                        }
+                        else if (peopleCount >= 12 ) {
+                            price = priceBoat * 0.75;
+                        }
+                        totalPrice = price;
+                        if (peopleCount % 2 == 0)
+                        {
+                            totalPrice *= 0.95;
+                        }
+
+                    };break;
+                case "Summer":
+                    {
+                        priceBoat = 4200;
+                        if (peopleCount <= 6)
+                        {
+                            price = priceBoat * 0.9;
+                        }
+                        else if (peopleCount >= 7 && peopleCount <= 11)
+                        {
+                            price = priceBoat * 0.85;
+                        }
+                        else if (peopleCount >= 12)
+                        {
+                            price = priceBoat * 0.75;
+                        }
+                        totalPrice = price;
+                        if (peopleCount % 2 == 0)
+                        {
+                            totalPrice *= 0.95;
+                        }
+
+                    }; break;
+                case "Autumn":
+                    {
+                        priceBoat = 4200;
+                        if (peopleCount <= 6)
+                        {
+                            price = priceBoat * 0.9;
+                        }
+                        else if (peopleCount >= 7 && peopleCount <= 11)
+                        {
+                            price = priceBoat * 0.85;
+                        }
+                        else if (peopleCount >= 12)
+                        {
+                            price = priceBoat * 0.75;
+                        }
+                        totalPrice = price;
+
+                    }; break;
+                case "Winter":
+                    {
+                        priceBoat = 2600;
+                        if (peopleCount <= 6)
+                        {
+                            price = priceBoat * 0.9;
+                        }
+                        else if (peopleCount >= 7 && peopleCount <= 11)
+                        {
+                            price = priceBoat * 0.85;
+                        }
+                        else if (peopleCount >= 12)
+                        {
+                            price = priceBoat * 0.75;
+                        }
+                        totalPrice = price;
+                        if (peopleCount % 2 == 0)
+                        {
+                            totalPrice *= 0.95;
+                        }
+
+                    }; break;
+            }
+
+
+
+            if (totalPrice <= totalBuget)
+            {
+                Console.WriteLine("Yes! You have {0:f2} leva left.", Math.Abs(totalBuget - totalPrice));
+            }
+            else
+            {
+                Console.WriteLine("Not enough money! You need {0:f2} leva.", Math.Abs(totalBuget - totalPrice));
+            }
+        }
+    }
+}
