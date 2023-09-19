@@ -1,0 +1,30 @@
+namespace Redecorating
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double nylonPerSquere = 1.5;
+            double paintPerLiter = 14.5;
+            double thinnerPerSquere = 5.0;
+            double bags = 0.4;
+
+            int requiredNylon = int.Parse(Console.ReadLine());
+            int requiredPaint = int.Parse(Console.ReadLine());
+            int requiredthinner = int.Parse(Console.ReadLine());
+            int hoursToWork = int.Parse(Console.ReadLine());
+
+            double totalNylon = (requiredNylon + 2) * nylonPerSquere;
+            double totalPaint = (requiredPaint + (requiredPaint * 0.1)) * paintPerLiter;
+            double totalThinner = requiredthinner * thinnerPerSquere;
+
+            double sumForMaterials = totalNylon + totalPaint + totalThinner + bags;
+            double sumForCraftsmen = (sumForMaterials * 0.3) * hoursToWork;
+
+            Console.WriteLine(sumForMaterials + sumForCraftsmen);
+
+
+
+        }
+    }
+}
