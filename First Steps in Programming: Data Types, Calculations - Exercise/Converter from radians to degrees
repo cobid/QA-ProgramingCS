@@ -1,0 +1,12 @@
+namespace Converter_from_radians_to_degrees
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double radians = double.Parse(Console.ReadLine());
+            double degresse = radians * 180 / Math.PI;
+            Console.WriteLine(degresse);
+        }
+    }
+}
