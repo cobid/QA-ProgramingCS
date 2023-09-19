@@ -1,0 +1,20 @@
+namespace _04._Mandatory_Literature
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int pages = int.Parse(Console.ReadLine());
+            int pagesInOneHour = int.Parse(Console.ReadLine());
+            int days = int.Parse(Console.ReadLine());
+
+            // pages/pagesPerHour/days
+
+            double timeForBook = (pages/pagesInOneHour);
+            int hoursPerDay = (int)(Math.Floor(timeForBook/days));
+            
+
+            Console.WriteLine(hoursPerDay);
+        }
+    }
+}
