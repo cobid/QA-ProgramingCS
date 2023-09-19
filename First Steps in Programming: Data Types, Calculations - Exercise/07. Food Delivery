@@ -1,0 +1,23 @@
+namespace _07._Food_Delivery
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double chickenMenu = 10.35;
+            double fishMenu = 12.4;
+            double vegetarianMenu = 8.15;
+            double delivery = 2.5;
+
+            int numberOfChicken = int.Parse(Console.ReadLine());
+            int numberOfFish = int.Parse(Console.ReadLine());
+            int numberOfVegetarian = int.Parse(Console.ReadLine());
+
+            double priceOrder = (numberOfChicken *  chickenMenu) +
+                (numberOfFish * fishMenu) + (numberOfVegetarian* vegetarianMenu);
+            double priceOfDessert = priceOrder * 0.20;
+
+            Console.WriteLine(priceOrder + priceOfDessert + delivery);
+        }
+    }
+}
