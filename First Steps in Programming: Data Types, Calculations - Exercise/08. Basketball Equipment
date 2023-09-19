@@ -1,0 +1,23 @@
+using System.Diagnostics.CodeAnalysis;
+
+namespace Basketball_equipment
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            
+              int days = int.Parse(Console.ReadLine());
+            int traningDays = days;
+
+            double priceSnickers = days * 0.6;
+            double team = priceSnickers * 0.8;
+            double basketball = team * 0.25;
+            double accessories = basketball * 0.2;
+             
+            double totalSum =traningDays + priceSnickers + team + basketball + accessories ;
+
+            Console.WriteLine(totalSum);
+        }
+    }
+}
