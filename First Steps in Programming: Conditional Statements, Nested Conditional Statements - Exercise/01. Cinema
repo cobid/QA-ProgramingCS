@@ -1,0 +1,22 @@
+namespace Cinema
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string categoryMovie = Console.ReadLine();
+            int col = int.Parse(Console.ReadLine());
+            int row = int.Parse(Console.ReadLine());
+            double totalSeats = col * row;
+            double ticketPrice = 0; 
+
+            switch (categoryMovie) {
+                case "Premiere": ticketPrice = totalSeats *= 12; break; 
+                case "Normal": ticketPrice = totalSeats *= 7.5; break; 
+                case "Discount": ticketPrice = totalSeats *= 5.00; break; 
+            }
+
+            Console.WriteLine("{0:f2} leva", ticketPrice);   
+        }
+    }
+}
