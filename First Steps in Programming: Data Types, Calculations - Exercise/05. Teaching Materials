@@ -1,0 +1,28 @@
+using System.Runtime.ConstrainedExecution;
+using System.Xml.Schema;
+
+namespace _05._Teaching_materials
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            double pricePackageOfPens = 5.8;
+            double pricePackageOfMarkers = 7.2;
+            double priceCleanerPerLiter = 1.2;
+
+            int numberPensPackage = int.Parse(Console.ReadLine());
+            int numberMarkersPackage = int.Parse(Console.ReadLine());
+            int litersBoardCleiner = int.Parse(Console.ReadLine());
+            int discount = int.Parse(Console.ReadLine());
+
+            double sum = (numberPensPackage * pricePackageOfPens) + (numberMarkersPackage * pricePackageOfMarkers)
+                + (litersBoardCleiner * priceCleanerPerLiter) ;
+            Console.WriteLine(sum - ((sum * discount) / 100));
+
+
+           
+        }
+    }
+}
