@@ -1,0 +1,17 @@
+namespace Deposit_Calculator
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double depositedAmount = double.Parse(Console.ReadLine());
+            int mounts = int.Parse(Console.ReadLine()); 
+            double interest = double.Parse(Console.ReadLine());
+
+            //amount = deposited amount + term of deposit * (deposited amount * annual interest rate) / 12
+
+            double amount = depositedAmount + mounts * (depositedAmount * (interest /100)) / 12;
+            Console.WriteLine(amount);
+        }
+    }
+}
