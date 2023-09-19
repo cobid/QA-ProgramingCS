@@ -1,0 +1,20 @@
+namespace Aquarium
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());
+            int h = int.Parse(Console.ReadLine());
+            double percentSand = double.Parse(Console.ReadLine());
+
+            double aquariumVolume = (a * b * h) * 0.001;
+            double sandVolumePercent = percentSand / 100;
+            double sandVolume = aquariumVolume * sandVolumePercent;            
+            double aquariumWater = aquariumVolume - sandVolume;
+
+            Console.WriteLine("{0:f2}", aquariumWater);
+        }
+    }
+}
