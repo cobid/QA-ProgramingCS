@@ -1,0 +1,55 @@
+namespace _05._Journey
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var buget = double.Parse(Console.ReadLine());
+            string season = Console.ReadLine();
+            string destination = "";
+            double price = 0;
+            string holidayTipe = "";
+
+            if (buget <= 100)
+            {
+                destination = "Bulgaria";
+                if (season == "summer")
+                {
+                    holidayTipe = "Camp";
+                    price = buget * 0.3;
+                }
+                else if (season == "winter")
+                {
+                    holidayTipe = "Hotel";
+                    price = buget * 0.7;
+                }
+
+            }
+            else if (buget <= 1000)
+            {
+                destination = "Balkans";
+                if (season == "summer")
+                {
+                    holidayTipe = "Camp";
+                    price = buget * 0.4;
+                }
+                else if (season == "winter")
+                {
+                    price = buget * 0.8;
+                    holidayTipe = "Hotel";
+                }
+
+                
+                                
+            }
+            else
+            {
+                destination = "Europe";
+                holidayTipe = "Hotel";
+                price = buget * 0.90;
+            }
+            Console.WriteLine($"Somewhere in {destination}");
+            Console.WriteLine("{0} - {1:f2}", holidayTipe, price);
+        }
+    }
+}
