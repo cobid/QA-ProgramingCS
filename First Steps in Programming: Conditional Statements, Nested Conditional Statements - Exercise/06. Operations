@@ -1,0 +1,85 @@
+namespace _06._Operations
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int N1 = int.Parse(Console.ReadLine());
+            int N2 = int.Parse(Console.ReadLine());
+            string operat = Console.ReadLine();
+            double result = 0;
+            string oddEven = "";
+
+            
+            switch (operat)
+            {
+                case "+":
+                    {
+                        result = N1 + N2;
+
+                        if (result % 2 == 0)
+                        {
+                            oddEven = "even";
+                        }
+                        else
+                        {
+                            oddEven = "odd";
+                        }
+                        Console.WriteLine("{0} + {1} = {2} - {3}", N1, N2, result, oddEven);
+                    }
+                    break;
+                case "-":
+                    {
+                        result = N1 - N2;
+                        if (result % 2 == 0)
+                        {
+                            oddEven = "even";
+                        }
+                        else
+                        {
+                            oddEven = "odd";
+                        }
+                        Console.WriteLine("{0} - {1} = {2} - {3}", N1, N2, result, oddEven);
+                    }
+                    break;
+                case "*":
+                    {
+                        result = N1 * N2;
+                        if (result % 2 == 0)
+                        {
+                            oddEven = "even";
+                        }
+                        else
+                        {
+                            oddEven = "odd";
+                        }
+                        Console.WriteLine("{0} * {1} = {2} - {3}", N1, N2, result, oddEven);
+                    }
+                    break;
+                case "/":
+                    if(N2 != 0) { 
+                    
+                        result = 1.0 * N1 / N2;
+                     Console.WriteLine("{0} / {1} = {2}", N1, N2, result);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cannot divide {0} by zero", N1);
+                    }
+                    break;
+                case "%":
+                    if (N2 != 0)
+                    {
+                                   
+                        result = N1 % N2;
+                        Console.WriteLine("{0} % {1} = {2}", N1, N2, result);
+                    }
+                    else 
+                    { 
+                        Console.WriteLine("Cannot divide {0} by zero", N1); }
+                    break;
+            }
+
+        }
+    }
+}
