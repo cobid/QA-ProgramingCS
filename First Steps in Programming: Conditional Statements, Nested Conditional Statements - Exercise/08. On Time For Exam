@@ -1,0 +1,72 @@
+using System.ComponentModel.Design;
+using System.Runtime.InteropServices;
+
+namespace _08._On_Time_for_Exam
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int examHour = int.Parse(Console.ReadLine());
+            int examMinutes = int.Parse(Console.ReadLine());
+            int arrivalHour = int.Parse(Console.ReadLine());
+            int arrivalMinutes = int.Parse(Console.ReadLine());
+
+            int examTotalMin = examHour * 60 + examMinutes;
+            int arrivTotalMin = arrivalHour * 60 + arrivalMinutes;
+
+            int leftTime = Math.Abs(examTotalMin - arrivTotalMin);
+            string cond = "";
+            string when = "";
+
+            if (examTotalMin > arrivTotalMin)
+            {
+
+                if (leftTime >= 0 && leftTime <= 30)
+                {
+                    cond = "On time";
+                    when = "before";
+                }
+                else if (leftTime > 30 && leftTime <= 59)
+                {
+                    cond = "Early";
+                    when = "before";
+                }
+                
+                if (leftTime >= 60) {
+                    cond = "Early";
+                    int hour = leftTime / 60;
+                    int minutes = leftTime % 60;
+                    Console.WriteLine("{0}", cond);
+                    Console.WriteLine($"{hour}:{minutes:00} hours before the start");
+                    return;
+
+                }
+                Console.WriteLine("{0} \n{1} minutes {2} the start", cond, leftTime, when);
+                
+            }
+            else if (examTotalMin < arrivTotalMin)
+            {
+                cond = "Late";
+                when = "after";
+                leftTime = Math.Abs(examTotalMin - arrivTotalMin);
+                if (leftTime < 60)
+                {
+                    Console.WriteLine("{0} \n{1} minutes {2} the start", cond, leftTime, when);
+                }
+                else
+                {
+                    int hour = leftTime / 60;
+                    int minutes = leftTime % 60;
+                    Console.WriteLine("{0}", cond);
+                    Console.WriteLine($"{hour}:{minutes:00} hours {when} the start");
+                }
+                
+            }
+            if (leftTime == 0)
+            {
+                Console.WriteLine("On time");
+            }
+        }
+        }
+    }
