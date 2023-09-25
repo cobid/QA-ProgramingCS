@@ -1,0 +1,38 @@
+namespace _10._Graduation
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string name = Console.ReadLine();
+            string inputGrades = Console.ReadLine();
+            double allGrades = 0;
+            int grate = 0;
+            int badGrates = 0;  
+
+            while (grate <= 12 )
+            {
+                double grade = Double.Parse(inputGrades);
+                allGrades += grade;
+                if (grade < 4 && badGrates <= 2)
+                {
+                    badGrates++;
+                    if (badGrates >= 2)
+                    {
+                        Console.WriteLine("{0} has been excluded at {1} grade", name, grate);
+                        break;
+                    }
+                }
+                grate++;
+                if (grate == 12)
+                {
+                    Console.WriteLine("{0} graduated. Average grade: {1:f2}", name, allGrades / grate);
+                    break;
+                }
+                
+                inputGrades = Console.ReadLine();
+            }
+            
+        }
+    }
+}
