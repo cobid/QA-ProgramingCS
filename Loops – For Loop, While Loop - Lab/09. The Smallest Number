@@ -1,0 +1,21 @@
+namespace _09._The_Smallest_Number
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int minNum = int.MaxValue;
+            string input = Console.ReadLine();  
+            while (input != "Stop")
+            {
+                int nextNum  = int.Parse(input);
+                minNum = Math.Min(minNum, nextNum);
+                input = Console.ReadLine(); 
+            }
+            
+
+            Console.WriteLine($"{minNum}");
+        }
+    }
+}
