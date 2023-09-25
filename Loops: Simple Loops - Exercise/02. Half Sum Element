@@ -1,0 +1,34 @@
+namespace _2._02._Half_Sum_Element
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfLines = int.Parse(Console.ReadLine());
+            int sum = 0;
+            
+            int higherНumber = int.MinValue;
+
+            for (int i = 0; i < numberOfLines; i++)
+            {
+                int nextNum = int.Parse(Console.ReadLine());
+                sum += nextNum;
+                if (nextNum > higherНumber)
+                {
+                    higherНumber = nextNum;
+                }
+                
+                
+            }
+            int otherSum = sum - higherНumber;
+            if (higherНumber == sum - higherНumber)
+            {
+                Console.WriteLine("Yes\nSum = {0}", higherНumber);
+
+            }else
+            {
+                Console.WriteLine("No\nDiff = {0}", Math.Abs(higherНumber - otherSum));
+            }
+        }
+    }
+}
