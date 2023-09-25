@@ -1,0 +1,25 @@
+namespace _08._The_Greatest_Number
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            string input = Console.ReadLine();
+
+            int maxNum = int.MinValue;
+            
+            while (input != "Stop")
+            {
+                int neXtNumber = int.Parse(input);  
+                maxNum = Math.Max(maxNum, neXtNumber);  
+                
+                input = Console.ReadLine();
+            }
+            
+            
+            
+            Console.WriteLine($"{maxNum}");
+        }
+    }
+}
