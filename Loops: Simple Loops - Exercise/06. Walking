@@ -1,0 +1,36 @@
+namespace _06._Walking
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            int target = 10000;
+            int count = 0;
+        
+            
+
+            while (count < target)
+            {
+                if (input == "Going home")
+                {
+                    int stepsToHome = int.Parse(Console.ReadLine());
+                    count += stepsToHome;
+                    break;
+                }
+                int steps = int.Parse(input);
+                count += steps;
+
+                
+                input = Console.ReadLine();
+            }
+            if (count < target)
+                Console.WriteLine($"{target - count} more steps to reach goal.");
+            else
+            {
+                Console.WriteLine("Goal reached! Good job!");
+                Console.WriteLine($"{count - target} steps over the goal!");
+            }
+        }
+    }
+}
