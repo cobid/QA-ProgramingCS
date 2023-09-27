@@ -1,0 +1,36 @@
+namespace _07._Coins
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double money = double.Parse(Console.ReadLine());
+
+            int numCoins = 0;
+            int stotinki = (int)(money * 100);
+
+            int curStotinkiCoin = 200; 
+
+            while (curStotinkiCoin != 0)
+            {
+                numCoins += stotinki / curStotinkiCoin;
+                stotinki = stotinki % curStotinkiCoin;
+
+                switch (curStotinkiCoin)
+                {
+                    case 200: curStotinkiCoin = 100; break;
+                    case 100: curStotinkiCoin = 50; break;
+                    case 50: curStotinkiCoin = 20; break;
+                    case 20: curStotinkiCoin = 10; break;
+                    case 10: curStotinkiCoin = 5; break;
+                    case 5: curStotinkiCoin = 2; break;
+                    case 2: curStotinkiCoin = 1; break;
+                    case 1: curStotinkiCoin = 0; break; 
+                }
+            }
+
+            Console.WriteLine(numCoins);
+
+        }
+    }
+}
