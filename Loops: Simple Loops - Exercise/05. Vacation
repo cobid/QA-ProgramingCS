@@ -1,0 +1,52 @@
+namespace _05._Vacation
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double neededMoney = double.Parse(Console.ReadLine());
+            double cashMoney = double.Parse(Console.ReadLine());
+            
+            int countSpentMoney = 0;
+            int countDays = 0;
+            double totalSaveMoney = cashMoney;
+
+            while (countSpentMoney < 5 && cashMoney < neededMoney)
+            {
+                string saveSpend = Console.ReadLine();
+                double amount = double.Parse(Console.ReadLine());
+
+                countDays++;
+                if (saveSpend == "save")
+                {
+                    totalSaveMoney += amount;
+                    if (totalSaveMoney  >= neededMoney )
+                    {
+                        break;
+                    }
+                }
+                else if (saveSpend == "spend")
+                {
+                    totalSaveMoney -= amount;
+                    if (totalSaveMoney <= 0)
+                    {
+                        totalSaveMoney = 0;
+                    }
+                    countSpentMoney++;
+                }
+                
+                
+
+            }
+            if (countSpentMoney >= 5)
+            {
+                Console.WriteLine("You can't save the money.");
+                Console.WriteLine(countSpentMoney);
+            }
+            else
+            {
+                Console.WriteLine($"You saved the money for {countDays} days.");
+            }
+        }
+    }
+}
