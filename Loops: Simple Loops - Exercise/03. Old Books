@@ -1,0 +1,30 @@
+using System;
+using System.Net.NetworkInformation;
+using static System.Reflection.Metadata.BlobBuilder;
+
+namespace _03._Old_Books
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string book = Console.ReadLine();
+            string curentBook = Console.ReadLine();
+            int count = 0;
+ 
+            while (curentBook != "No More Books")
+            {
+                if (curentBook == book)
+                {
+                    Console.WriteLine("You checked {0} books and found it.", count);
+                    return;
+                }
+
+
+                count++;
+                curentBook = Console.ReadLine();
+            }
+            Console.WriteLine("The book you search is not here!\nYou checked {0} books.", count);
+        }
+    }
+}
