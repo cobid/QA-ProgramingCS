@@ -1,0 +1,31 @@
+namespace _09._Moving
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int width = int.Parse(Console.ReadLine());
+            int lenght = int.Parse(Console.ReadLine());
+            int height = int.Parse(Console.ReadLine());
+
+            int volumeApart = width * height * lenght;
+            int leftApartVolume = volumeApart;
+            
+            string input = Console.ReadLine();  
+
+            while (volumeApart >= 0 && input != "Done")
+            {
+                int boxVolume = int.Parse(input);
+                leftApartVolume -= boxVolume;
+                if (leftApartVolume < 0)
+                {
+                    Console.WriteLine("No more free space! You need {0} Cubic meters more.",
+                        Math.Abs(leftApartVolume));
+                    return;
+                }
+                input = Console.ReadLine();
+            }
+            Console.WriteLine("{0} Cubic meters left.", leftApartVolume);
+        }
+    }
+}
