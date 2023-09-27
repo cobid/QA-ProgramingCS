@@ -1,0 +1,28 @@
+namespace _08._Cake
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int width = int.Parse(Console.ReadLine());
+            int length = int.Parse(Console.ReadLine());
+
+            int cake  = width * length;
+            int leftCakePieces = cake;
+            string input = Console.ReadLine();
+            while (leftCakePieces >= 0 && input != "STOP") {
+                  
+                int gests = int.Parse(input);
+                leftCakePieces -= gests;
+                if (leftCakePieces < 0)
+                {
+                    Console.WriteLine("No more cake left! You need {0} pieces more.", Math.Abs(leftCakePieces));
+                    return;
+                }
+             
+                input = Console.ReadLine();
+            }
+            Console.WriteLine("{0} pieces are left.", leftCakePieces);
+        }
+    }
+}
