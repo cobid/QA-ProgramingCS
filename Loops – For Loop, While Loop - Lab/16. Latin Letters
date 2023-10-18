@@ -1,0 +1,6 @@
+char letterBegin = char.Parse(Console.ReadLine());
+char letterEnd = char.Parse(Console.ReadLine());
+for (char i = letterBegin; i <= letterEnd; i++)
+{
+    Console.Write($"{i} ");
+}
