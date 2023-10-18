@@ -1,0 +1,6 @@
+int num = int.Parse(Console.ReadLine());
+for (int i = num; i > 0; i--)
+{
+    Console.WriteLine("{0} days before the exam", i);
+}
+Console.WriteLine("The exam has come");
