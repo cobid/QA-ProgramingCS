@@ -1,0 +1,22 @@
+int input = int.Parse(Console.ReadLine());
+int startNum = input;
+bool numberIsSpecial = true;
+
+while (input > 0)
+{
+    int divideNum = startNum % 10;
+    if (startNum % divideNum != 0)
+    {
+        numberIsSpecial = false;    
+        break;
+    }
+    input = input / 10;
+}
+if (numberIsSpecial == true) 
+{ 
+    Console.WriteLine(startNum + " is special");
+}
+else
+{
+    Console.WriteLine(startNum + " is not special");
+}
