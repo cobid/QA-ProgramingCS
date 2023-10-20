@@ -1,0 +1,20 @@
+string input = Console.ReadLine();
+double sum = 0;
+
+while (input != "End")
+{
+    double value = double.Parse(input);
+    if (value > 0)
+    {
+        Console.WriteLine($"Increase: {value:F2}");
+        sum += value;
+    }
+    else if (value < 0)
+    { 
+        double decreaseValue = Math.Abs(value);
+        Console.WriteLine($"Decrease: {decreaseValue:F2}");
+        sum -= decreaseValue;
+    }
+    input = Console.ReadLine();
+}
+Console.WriteLine($"Balance: {sum:F2}");
