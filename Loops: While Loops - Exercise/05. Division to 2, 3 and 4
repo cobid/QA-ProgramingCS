@@ -1,0 +1,24 @@
+int n = int.Parse(Console.ReadLine());
+double countDev2 = 0;
+double countDev3 = 0;
+double countDev4 = 0;
+
+for (int i = 0; i < n; i++)
+{
+    int num = int.Parse(Console.ReadLine());    
+    if (num % 2 == 0)
+    {
+        countDev2++;
+    }
+    if (num % 3 == 0)
+    {
+        countDev3++;
+    }
+    if (num % 4 == 0)
+    {
+        countDev4++;
+    }
+}
+Console.WriteLine("{0:F2}%", (countDev2 / n) * 100 );
+Console.WriteLine("{0:F2}%", (countDev3 / n) * 100 );
+Console.WriteLine("{0:F2}%", (countDev4 / n) * 100 );
