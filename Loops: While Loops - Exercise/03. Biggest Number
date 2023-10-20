@@ -1,0 +1,11 @@
+int num = int.Parse(Console.ReadLine());
+int result = int.MinValue;
+for (int i = 0; i < num; i++)
+{
+    int nextNum = int.Parse(Console.ReadLine());
+    if (nextNum >= result)
+    {
+        result = nextNum;
+    }
+}
+Console.WriteLine(result); 
