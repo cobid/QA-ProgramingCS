@@ -1,0 +1,29 @@
+int firstNum = int.Parse(Console.ReadLine());
+int secondNum = int.Parse(Console.ReadLine());
+
+for (int i = firstNum; i <= secondNum; i++)
+{
+    int currentNum = i;
+    bool numberIsPrime = true;
+    int devider = 2;
+
+    while (devider < secondNum)
+    {
+        if (currentNum == devider)
+        {
+            devider++;
+            continue;
+        }
+        if (currentNum % devider == 0)
+        {
+            numberIsPrime = false;
+            break;
+
+        }
+        devider++;
+    }
+    if (numberIsPrime)
+    {
+        Console.Write(currentNum + " ");
+    }
+}
