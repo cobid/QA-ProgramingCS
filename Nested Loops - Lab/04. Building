@@ -1,0 +1,22 @@
+int row = int.Parse(Console.ReadLine());    
+int col = int.Parse(Console.ReadLine());    
+
+for (int i = row; i >= 1; i--)
+{
+    for (int j = 0; j < col; j++)
+    {
+        if (i == row)
+        {
+            Console.Write($"L{i}{j} ");
+        }
+        else if (i % 2 == 0) 
+        { 
+            Console.Write($"O{i}{j} ");
+        }
+        else 
+        {
+            Console.Write($"A{i}{j} ");
+        }
+    }
+    Console.WriteLine();
+}
