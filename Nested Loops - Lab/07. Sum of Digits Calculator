@@ -1,0 +1,18 @@
+string input  = Console.ReadLine();
+int sumOfDigit = 0;
+while (input != "End")
+{
+    int num = int.Parse(input);
+    
+    int digit = 0;
+    for (int i = 0; num > 0; i++)
+    {
+        digit = num % 10;  
+        sumOfDigit += digit;    
+        num = num / 10;
+    }
+    Console.WriteLine($"Sum of digits = {sumOfDigit}");
+    sumOfDigit = 0;
+    input = Console.ReadLine();
+}
+Console.WriteLine("Goodbye");
