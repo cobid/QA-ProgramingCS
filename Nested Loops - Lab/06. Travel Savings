@@ -1,0 +1,24 @@
+string destination = Console.ReadLine();
+while (destination != "End")
+{
+    double sumToTraveling = double.Parse(Console.ReadLine());
+    double collectSum = double.Parse(Console.ReadLine());
+    double sum = 0;
+    
+    
+    while (true){
+        sum += collectSum;
+        Console.WriteLine($"Collected: {sum:f2}");
+        if (sum >= sumToTraveling)
+        {
+            Console.WriteLine($"Going to {destination}!");
+            break;
+        }
+        
+        
+        collectSum = double.Parse(Console.ReadLine());
+
+    }
+
+    destination = Console.ReadLine();
+}
