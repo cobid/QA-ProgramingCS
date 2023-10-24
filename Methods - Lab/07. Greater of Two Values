@@ -1,0 +1,197 @@
+SoftUni Judge
+Contests 
+Submissions
+Feedback
+Hello, cobi_d!
+Log out
+Search
+Home Submissions 36859217
+Solution #36859217 by cobi_d for problem 07. Greater of Two Values
+Zero test #1 (Correct answer)
+The zero tests are not included in the final result.
+Expected output:Your output:
+1
+16
+1
+16
+Time used: 0.070 s
+Memory used: 0.00 MB
+Zero test #2 (Correct answer)
+The zero tests are not included in the final result.
+Expected output:Your output:
+1
+z
+1
+z
+Time used: 0.060 s
+Memory used: 0.00 MB
+Zero test #3 (Correct answer)
+The zero tests are not included in the final result.
+Expected output:Your output:
+1
+bbb
+1
+bbb
+Time used: 0.060 s
+Memory used: 0.00 MB
+Test #1 (Correct answer)
+Time used: 0.080 s
+Memory used: 0.00 MB
+Test #2 (Correct answer)
+Time used: 0.070 s
+Memory used: 0.00 MB
+Test #3 (Correct answer)
+Time used: 0.080 s
+Memory used: 0.00 MB
+Test #4 (Correct answer)
+Time used: 0.070 s
+Memory used: 0.00 MB
+Test #5 (Correct answer)
+Time used: 0.060 s
+Memory used: 0.00 MB
+Test #6 (Correct answer)
+Time used: 0.060 s
+Memory used: 0.00 MB
+Test #7 (Correct answer)
+Time used: 0.070 s
+Memory used: 0.00 MB
+Test #8 (Correct answer)
+Time used: 0.070 s
+Memory used: 0.00 MB
+Test #9 (Correct answer)
+Time used: 0.070 s
+Memory used: 0.00 MB
+Source code
+1
+string type = Console.ReadLine();
+2
+string firstValue = Console.ReadLine();
+3
+string secondValue = Console.ReadLine();
+4
+​
+5
+string result = GreaterOfTwoValues (type, firstValue, secondValue);   
+6
+Console.WriteLine (result);
+7
+​
+8
+static string GreaterOfTwoValues (string type, string firstValue, string secondValue)
+9
+{
+10
+    string result = "";
+11
+    if (type == "int")
+12
+    {
+13
+        int resultFromIntegers = 0;
+14
+        int firstNum = int.Parse (firstValue);  
+15
+        int secondNum = int.Parse (secondValue);  
+16
+        if (firstNum < secondNum)
+17
+        {
+18
+            resultFromIntegers = secondNum;
+19
+        }
+20
+        else
+21
+        {
+22
+            resultFromIntegers = firstNum;    
+23
+        }
+24
+        result = resultFromIntegers.ToString ();
+25
+​
+26
+    }
+27
+    else if (type == "char")
+28
+    {
+29
+        char firstChar = char.Parse(firstValue);
+30
+        char secondChar = char.Parse(secondValue);
+31
+        string resultChar = "";
+32
+        if (firstChar > secondChar)
+33
+        {
+34
+            resultChar = firstChar.ToString (); 
+35
+        }
+36
+        else 
+37
+        { 
+38
+            resultChar = secondChar.ToString ();   
+39
+        }
+40
+        result = resultChar.ToString ();
+41
+    }
+42
+    else if(type == "string")
+43
+    {
+44
+        string firstString = firstValue;
+45
+        string secondString = secondValue;
+46
+        string resultFromStrings = "";
+47
+        
+48
+​
+49
+        int resultStrings = string.Compare(firstString, secondString);
+50
+​
+51
+        if (resultStrings < 0)
+52
+        {
+53
+            resultFromStrings = secondString;
+54
+        }
+55
+        else
+56
+        {
+57
+            resultFromStrings = firstString;
+58
+        }
+59
+        result = resultFromStrings;
+60
+    }
+61
+​
+62
+        return result;
+63
+}
+Created on: 24/10/2023 14:54:34
+
+Submission Type: C# code (.NET 6)
+
+© 2011-2023 - Open Judge System (OJS) 1.5.20150729.95737d0 - running on Windows. Open source project.
+
+Cookies help us deliver our services. By using our services, you agree to our use of cookies. OK
