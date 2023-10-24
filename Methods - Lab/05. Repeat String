@@ -1,0 +1,14 @@
+string text = Console.ReadLine();
+int num = int.Parse(Console.ReadLine());
+  
+string repeadText = RepeatString (text, num);
+Console.WriteLine(repeadText);
+static string RepeatString (string text, int num)
+{
+    string repeadText = "";
+    for (int i = 0; i < num; i++)
+    {
+        repeadText += text;
+    }
+    return repeadText;
+}
