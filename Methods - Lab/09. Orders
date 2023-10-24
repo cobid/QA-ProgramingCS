@@ -1,0 +1,31 @@
+using System.Diagnostics.CodeAnalysis;
+
+string product = Console.ReadLine();
+string quantity = Console.ReadLine();
+
+double totalSum = ProductPrice(product, quantity);
+Console.WriteLine($"{totalSum:f2}");
+
+static double ProductPrice(string product, string quantuty)
+{
+    int quantityForProduct = int.Parse(quantuty);
+    double sum = 0; 
+    switch (product) {
+        case "coffee":
+            sum = quantityForProduct * 1.50;
+            break;
+        case "water":
+            sum = quantityForProduct * 1.00;
+            break;
+        case "coke":
+            sum = quantityForProduct * 1.40;
+            break;
+        case "snacks":
+            sum = quantityForProduct * 2.00;
+            break;
+
+    }
+         return sum;
+}
+
+
