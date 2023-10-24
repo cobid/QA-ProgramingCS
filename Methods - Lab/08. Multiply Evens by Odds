@@ -1,0 +1,52 @@
+int num = int.Parse(Console.ReadLine());
+
+int numberForOddDigit = Math.Abs(num);
+int numberForEvenDigit = Math.Abs(num);
+
+int sumOdd = GetSumOfOddDigits(numberForOddDigit);
+int sumEven = GetSumOfEvenDigits(numberForEvenDigit);
+
+int result = GetMultipleOfEvenAndOdds(sumOdd, sumEven);
+Console.WriteLine(result);
+
+
+static int GetSumOfOddDigits(int number)
+{
+    int sumOdd = 0;
+    int currentDigit = 0;
+    while (number >= 1)
+    {
+        currentDigit = number % 10;
+        if (currentDigit % 2 == 1)
+        {
+            sumOdd += currentDigit;
+        }
+        number = number / 10;
+    }
+
+    return sumOdd;
+}
+
+static int GetSumOfEvenDigits(int number)
+{
+    int sumEven = 0;
+    int currentDigit = 0;
+    while (number >= 1)
+    {
+        currentDigit = number % 10;
+        if (currentDigit % 2 == 0)
+        {
+            sumEven += currentDigit;
+        }
+        number = number / 10;
+    }
+
+    return sumEven;
+}
+
+static int GetMultipleOfEvenAndOdds(int sumOdd, int sumEven)
+{
+    int result = sumOdd * sumEven;
+    return result;
+
+}
