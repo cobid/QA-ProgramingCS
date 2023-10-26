@@ -1,0 +1,26 @@
+int num = int.Parse(Console.ReadLine());
+
+
+ReturnDayFromNumber(num);
+
+static void ReturnDayFromNumber(int num)
+{
+    string[] days = {
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+    };
+    if (num > 0 && num < 8)
+    {
+
+        Console.WriteLine(days[num - 1]);
+    }
+    else
+    {
+        Console.WriteLine("Invalid day!");
+    }
+}
