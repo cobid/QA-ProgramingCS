@@ -1,0 +1,25 @@
+using System.Diagnostics.CodeAnalysis;
+
+int[] numbers = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+
+int result = GetEvenAndOddDigitFromArrayAndPrintDifference(numbers);
+Console.WriteLine(result);
+
+static int GetEvenAndOddDigitFromArrayAndPrintDifference(int[] ints)
+{
+    int sumOdd = 0;
+    int sumEven = 0;
+    
+    for (int i = 0; i < ints.Length ; i++)
+    {
+        if (ints[i] % 2 == 0)
+        {
+            sumEven += ints[i];
+        }
+        else
+        {
+            sumOdd += ints[i];
+        }
+    }
+    return sumEven - sumOdd;
+}
