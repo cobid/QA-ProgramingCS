@@ -1,0 +1,24 @@
+int[] array1 = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+int[] array2 = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+
+string result = IsEqualsArrays(array1, array2);
+Console.WriteLine(result);
+static string IsEqualsArrays(int[] array1, int[] array2)
+{
+    bool arraysEquals = true;
+    for (int i = 0; i < array1.Length; i++)
+    {
+        if (array1[i] != array2[i])
+        {
+            arraysEquals = false;
+        }
+    }
+    if (arraysEquals)
+    {
+        return "Arrays are identical.";
+    }
+    else
+    {
+        return "Arrays are not identical.";
+    }
+}
