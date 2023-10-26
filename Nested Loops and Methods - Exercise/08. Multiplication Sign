@@ -1,0 +1,58 @@
+using System.Collections;
+
+int num1 = int.Parse(Console.ReadLine());
+int num2 = int.Parse(Console.ReadLine());
+int num3 = int.Parse(Console.ReadLine());
+
+ArrayList arrayList = new ArrayList();
+arrayList.Add(num1);
+arrayList.Add(num2);
+arrayList.Add(num3);
+
+
+Console.WriteLine(MultiplicationSign(arrayList));
+
+
+static string MultiplicationSign(ArrayList list)
+{
+    bool isPositive = true;
+    bool isZero = false;
+
+
+    for (int i = 0; i < list.Count; i++)
+    {
+        int num = (int)list[i];
+        if (num < 0 && isPositive)
+        {
+            isPositive = false;
+        }
+        else if (num < 0 && !isPositive)
+        {
+            isPositive = true;
+        }
+        else if (num == 0)
+        {
+            isZero = true;
+        }
+    }
+    string result;
+
+    if (isZero)
+    {
+        result = "zero";
+    }
+    else
+    {
+        if (isPositive)
+        {
+            result = "positive";
+        }
+        else
+        {
+            result = "negative";
+        }
+    }
+
+    return result;
+}
+
