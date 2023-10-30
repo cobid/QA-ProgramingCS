@@ -1,0 +1,33 @@
+List<int> numbers = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+
+string[] input = Console.ReadLine().Split(" ").ToArray();
+
+while (input[0] != "end")
+{
+    string command = input[0];
+    switch (command)
+    {
+
+        case "Add":
+            int num = int.Parse(input[1]);
+            numbers.Add(num);
+            break;
+        case "Remove":
+            int numDelete = int.Parse(input[1]);
+            numbers.Remove(numDelete);
+            break;
+        case "RemoveAt":
+            int index = int.Parse(input[1]);
+            numbers.RemoveAt(index);
+            break;
+        case "Insert":
+            int numInsert = int.Parse(input[1]);
+            int position = int.Parse(input[2]);
+            numbers.Insert(position, numInsert);
+            break;
+
+    }
+    input = Console.ReadLine().Split(" ").ToArray();
+}
+Console.Write(String.Join(" ", numbers));
+
