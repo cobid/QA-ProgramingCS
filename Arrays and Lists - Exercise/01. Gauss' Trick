@@ -1,0 +1,19 @@
+List<int> numbers = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+List<int> result = new List<int>();
+
+while (numbers.Count > 0)
+{
+    if (numbers.Count == 1)
+    {
+        result.Add(numbers.First());
+        break;
+    }
+    int firstNum = numbers.First();
+    int lastNum = numbers.Last();
+    result.Add(firstNum + lastNum);
+    numbers.RemoveAt(0);
+    numbers.RemoveAt(numbers.Count - 1);
+
+    
+}
+Console.WriteLine(String.Join(" ", result));
