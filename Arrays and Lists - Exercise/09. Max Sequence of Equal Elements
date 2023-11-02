@@ -1,0 +1,28 @@
+List<int> numbers = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+
+List<int> result = new List<int>();
+
+for (int i = 0; i < numbers.Count - 1; i++)
+{
+    List<int> currentResult = new List<int>();   
+    if (numbers[i] == numbers[i + 1])
+    {
+        
+        for (int j = i; j <= numbers.Count - 1; j++)
+        {
+            if (numbers[i] == numbers[j])
+            {
+                currentResult.Add(numbers[j]);
+            }
+            else
+            {
+                break;
+            }
+        }
+        if (currentResult.Count > result.Count)
+        {
+            result = currentResult;
+        }     
+    }
+}
+Console.WriteLine(String.Join(" ", result));
