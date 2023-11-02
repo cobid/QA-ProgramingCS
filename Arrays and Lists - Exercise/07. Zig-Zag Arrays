@@ -1,0 +1,22 @@
+int n = int.Parse(Console.ReadLine());
+
+List<int> list1 = new List<int>(); 
+List<int> list2 = new List<int>();
+
+for (int i = 1; i <= n; i++)
+{
+    List<int> numbers = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+    if (i % 2 == 1)
+    {
+        list1.Add(numbers[0]);
+        list2.Add(numbers[1]);
+    }
+    else
+    {
+        list2.Add(numbers[0]);
+        list1.Add(numbers[1]);
+        
+    }
+}
+Console.WriteLine(String.Join(" ", list1));
+Console.WriteLine(String.Join(" ", list2));
