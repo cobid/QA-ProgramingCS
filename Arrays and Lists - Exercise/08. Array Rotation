@@ -1,0 +1,14 @@
+List<int> numbers = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+int n  = int.Parse(Console.ReadLine());
+int count = n;
+for (int i = 0; i < n; i++)
+{
+    if (count > 0) 
+    { 
+    numbers.Add(numbers[i]);
+    numbers.RemoveAt(i);
+    i--;
+    count--;
+    }
+}
+Console.WriteLine(String.Join(" ", numbers));
