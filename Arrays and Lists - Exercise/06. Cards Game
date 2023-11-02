@@ -1,0 +1,43 @@
+List<int> firstCards = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+List<int> secondCards = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+
+int lenghtCards = Math.Min(firstCards.Count, secondCards.Count);
+
+while (lenghtCards > 0)
+{
+    int currentCardFirst = firstCards[0];
+    int currentCardSecond = secondCards[0];
+    if(currentCardFirst > currentCardSecond)
+    {
+        firstCards.Add(currentCardFirst);
+        firstCards.Add(currentCardSecond);
+        firstCards.RemoveAt(0);
+        secondCards.RemoveAt(0);
+
+    }
+    else if(currentCardFirst < currentCardSecond)
+    {
+        secondCards.Add(currentCardSecond);
+        secondCards.Add(currentCardFirst);
+        secondCards.RemoveAt(0);
+        firstCards.RemoveAt(0);
+
+    }
+    else
+    {
+        firstCards.RemoveAt(0);
+        secondCards.RemoveAt(0);
+    }
+    lenghtCards = Math.Min(firstCards.Count, secondCards.Count);
+   
+}
+if(firstCards.Count == 0)
+{
+    int sum2 = secondCards.Sum();
+    Console.WriteLine("Second player wins! Sum: {0}", sum2);
+}
+else if (secondCards.Count == 0)
+{
+    int sum1 = firstCards.Sum();
+    Console.WriteLine("First player wins! Sum: {0}", sum1);
+}
