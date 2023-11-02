@@ -1,0 +1,24 @@
+List<int> firstList = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+List<int> secondList = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+
+int maxLenght = Math.Max(firstList.Count, secondList.Count);
+
+List<int> result = new List<int>();
+
+while (maxLenght > 0 || result.Count <= firstList.Count + secondList.Count)
+{
+    if(firstList.Count > 0)
+    {
+        result.Add(firstList[0]);
+        firstList.Remove(firstList[0]);
+        
+    }
+    if (secondList.Count > 0)
+    {
+        result.Add(secondList[0]);
+        secondList.Remove(secondList[0]);
+    }
+    
+    maxLenght--;    
+}
+Console.WriteLine(String.Join(" ", result));
