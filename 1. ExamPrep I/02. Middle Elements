@@ -1,0 +1,9 @@
+List<int> numbers = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+
+int firstNum = numbers[(numbers.Count - 1)/ 2 ];
+int secondNum = numbers[(numbers.Count - 1) / 2 + 1];
+
+double result = (firstNum + secondNum) / 2.0;
+
+
+Console.WriteLine("{0:F2}", result);
