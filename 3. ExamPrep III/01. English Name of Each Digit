@@ -1,0 +1,57 @@
+using System.ComponentModel.Design;
+
+int numbers = int.Parse(Console.ReadLine());
+
+int currentNum = 0;
+
+string result = "";
+
+while (numbers > 0)
+{
+    currentNum = numbers % 10;
+    
+    if (currentNum == 1)
+    {
+        result = "one";
+    }
+    else if (currentNum == 2)
+    { 
+        result = "two"; 
+    }
+    else if (currentNum == 3) 
+    {
+        result = "three";
+    }
+    else if (currentNum == 4) 
+    {
+        result = "four";
+    }
+    else if (currentNum == 5)
+    {
+        result = "five"; 
+    }
+    else if (currentNum == 6)
+    {
+        result = "six";
+    }
+    else if (currentNum == 7)
+    {
+        result = "seven";
+    }
+    else if (currentNum == 8) 
+    {
+        result = "eight"; 
+    }
+    else if (currentNum == 9)
+    { 
+        result = "nine";
+    }
+
+    numbers = numbers / 10;
+    Console.WriteLine(result);
+
+}
+
+
+
+
