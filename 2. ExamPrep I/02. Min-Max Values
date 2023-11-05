@@ -1,0 +1,20 @@
+List<int> numbers = Console.ReadLine().Split().Select(int.Parse).ToList();
+int n = int.Parse(Console.ReadLine());
+
+int maxNum = int.MinValue;
+int minNum = int.MaxValue;
+
+for  (int i = 0; i < n; i++)
+{
+	if (numbers[i] < minNum)
+	{
+		minNum = numbers[i];	
+	}
+	else if (numbers[i] > maxNum)
+	{
+		maxNum = numbers[i];	
+	}
+
+}
+Console.WriteLine(maxNum);
+Console.WriteLine(minNum);
