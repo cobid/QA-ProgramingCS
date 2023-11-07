@@ -1,0 +1,55 @@
+using System.ComponentModel.Design;
+using System.Text;
+using System.Text.RegularExpressions;
+
+string text = Console.ReadLine();
+
+StringBuilder digits = new StringBuilder();
+StringBuilder letters = new StringBuilder();
+StringBuilder specialSymbols = new StringBuilder();
+
+
+foreach (var item in text)
+{
+    if (char.IsDigit(item))
+    {
+        {
+            digits.Append(item);
+        }
+
+    }
+    else if (char.IsLetter(item))
+    {
+        letters.Append(item);
+    }
+    else
+    {
+        specialSymbols.Append(item);
+    }
+}
+
+
+//var filtereddigit = text.Where(char.IsDigit);
+//foreach (char digit in filtereddigit)
+//{
+//    digits.Append(digit);
+//    text.Remove(digit);
+//}
+//var filteredChars = text.Where(char.IsLetter);
+//foreach (char letter in filteredChars)
+//{
+//    letters.Append(letter);
+//    text.Remove(letter);
+
+//}
+//foreach (char otherSymbol in text)
+//{
+//    specialSymbols.Append(otherSymbol); 
+//}   
+
+Console.WriteLine(digits);
+Console.WriteLine(letters);
+Console.WriteLine(specialSymbols);
+
+
+
