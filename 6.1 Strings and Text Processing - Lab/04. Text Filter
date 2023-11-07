@@ -1,0 +1,14 @@
+string[] machesWord = Console.ReadLine().Split(", ");
+string text = Console.ReadLine();
+
+foreach (string word in machesWord)
+{
+    string toRemove = "".PadRight(word.Length, '*');
+    while (text.Contains(word))
+    {
+        text = text.Replace(word, toRemove);
+    }
+}
+Console.WriteLine(text);
+
+
