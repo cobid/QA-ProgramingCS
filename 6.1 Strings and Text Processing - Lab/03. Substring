@@ -1,0 +1,9 @@
+string forRemove = Console.ReadLine();
+string text = Console.ReadLine();
+
+while (text.Contains(forRemove))
+{
+    int index = text.IndexOf(forRemove);
+    text = text.Remove(index, forRemove.Length);    
+}
+Console.WriteLine(text);
