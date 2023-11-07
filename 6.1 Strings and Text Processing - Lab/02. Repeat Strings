@@ -1,0 +1,10 @@
+string[] input = Console.ReadLine().Split(" ");
+
+foreach (string line in input)
+{
+    string current = line;
+    for (int j = 0; j < current.Length; j++)
+    {
+        Console.Write(current);
+    }
+}
