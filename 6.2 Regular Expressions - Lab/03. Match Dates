@@ -1,0 +1,14 @@
+using System.Text.RegularExpressions;
+
+string text = Console.ReadLine();
+
+string pattern = @"\b(?<day>\d{2})(?<separator>[\/\.\-])(?<month>[A-Z][a-z]+)\2(?<year>\d{4})\b";
+
+Regex regex = new Regex(pattern);
+
+MatchCollection matches = regex.Matches(text);
+
+foreach (Match match in matches)
+{
+    Console.WriteLine("Day: {0}, Month: {1}, Year: {2}", match.Groups[1], match.Groups[3], match.Groups[4]);
+}
