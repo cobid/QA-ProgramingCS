@@ -1,0 +1,35 @@
+using NUnit.Framework;
+
+namespace TestApp.UnitTests;
+
+public class EmailValidatorTests
+{
+   
+    [TestCase("cobi.mail.get@yahoo.com")]
+    [TestCase("cobi-Ger@gmail1.com")]
+    [TestCase("cobi_d@abvA.bg")]
+    public void Test_ValidEmails_ReturnsTrue(string email)
+    {
+        // Arrange
+        // Act
+        bool result = EmailValidator.IsValidEmail(email);
+
+        // Assert
+        Assert.That(result, Is.True);
+    }
+
+    [TestCase("cobi.mail.get@yahoo.c")]
+    [TestCase("cobi-Ger@gmail1.1om")]
+    [TestCase("cobi_d^@abvA.bg")]
+    public void Test_InvalidEmails_ReturnsFalse(string email)
+    {
+        // Arrange
+       
+
+        // Act
+        bool result = EmailValidator.IsValidEmail(email);
+        
+        // Assert
+        Assert.That(result, Is.False);
+    }
+}
