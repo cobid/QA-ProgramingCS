@@ -1,0 +1,62 @@
+using NUnit.Framework;
+using System;
+
+namespace TestApp.Tests;
+
+public class LongestIncreasingSubsequenceTests
+{
+    [Test]
+    public void Test_GetLis_NullArray_ThrowsArgumentNullException()
+    {
+        //Arrange
+        int[] ints = null;
+        //Act
+        
+        //Assert
+        Assert.That(() => LongestIncreasingSubsequence.GetLis(ints),Throws.ArgumentNullException);
+    }
+
+    [Test]
+    public void Test_GetLis_EmptyArray_ReturnsEmptyString()
+    {
+        //Arrange
+        int[] ints = Array.Empty<int>();
+        //Act
+        string result = LongestIncreasingSubsequence.GetLis(ints);
+        //Assert
+        Assert.That(result, Is.EqualTo(string.Empty));
+    }
+
+    [Test]
+    public void Test_GetLis_SingleElementArray_ReturnsElement()
+    {
+        //Arrange
+        int[] ints = new int[] {42};
+        //Act
+        string result = LongestIncreasingSubsequence.GetLis(ints);
+        //Assert
+        Assert.That(result, Is.EqualTo("42"));
+    }
+
+    [Test]
+    public void Test_GetLis_UnsortedArray_ReturnsLongestIncreasingSubsequence()
+    {
+        //Arrange
+        int[] ints = new[] { 2, 4, -6, -3 };
+        //Act
+        string result = LongestIncreasingSubsequence.GetLis(ints);
+        //Assert
+        Assert.That(result, Is.EqualTo("2 4"));
+    }
+
+    [Test]
+    public void Test_GetLis_SortedArray_ReturnsItself()
+    {
+        //Arrange
+        int[] ints = new[] { 1, 4, 7, 9, 12 };
+        //Act
+        string result = LongestIncreasingSubsequence.GetLis(ints);
+        //Assert
+        Assert.That(result, Is.EqualTo("1 4 7 9 12"));
+    }
+}
