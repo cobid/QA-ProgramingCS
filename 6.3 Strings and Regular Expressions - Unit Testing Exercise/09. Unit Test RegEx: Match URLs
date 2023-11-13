@@ -1,0 +1,68 @@
+using NUnit.Framework;
+
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using static System.Net.WebRequestMethods;
+
+namespace TestApp.UnitTests;
+
+public class MatchUrlsTests
+{
+    // TODO: finish the test
+    [Test]
+    public void Test_ExtractUrls_EmptyText_ReturnsEmptyList()
+    {
+        // Arrange
+        string text = "";
+        string expected = string.Empty; 
+        // Act
+        List<string> result = MatchUrls.ExtractUrls(text);
+        // Assert
+        CollectionAssert.AreEqual(expected, result);
+    }
+
+    // TODO: finish the test
+    [Test]
+    public void Test_ExtractUrls_NoUrlsInText_ReturnsEmptyList()
+    {
+        string text = "cobidar";
+        string expected = string.Empty;
+        // Act
+        List<string> result = MatchUrls.ExtractUrls(text);
+        // Assert
+        CollectionAssert.AreEqual(expected, result);
+    }
+
+    [Test]
+    public void Test_ExtractUrls_SingleUrlInText_ReturnsSingleUrl()
+    {
+        string text = "https://www.google.com";
+        List<string> expected = new() { "https://www.google.com" };
+        // Act
+        List<string> result = MatchUrls.ExtractUrls(text);
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_ExtractUrls_MultipleUrlsInText_ReturnsAllUrls()
+    {
+        string text = "URLs: https://www.google.com, https://softuni.bg";
+        List<string> expected = new() { "https://www.google.com", "https://softuni.bg" };
+        // Act
+        List<string> result = MatchUrls.ExtractUrls(text);
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_ExtractUrls_UrlsInQuotationMarks_ReturnsUrlsInQuotationMarks()
+    {
+        string text = "URLs: \"https://www.google.com\"";
+        List<string> expected = new() { "https://www.google.com" };
+        // Act
+        List<string> result = MatchUrls.ExtractUrls(text);
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+}
