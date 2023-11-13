@@ -1,0 +1,65 @@
+using NUnit.Framework;
+
+using System;
+
+namespace TestApp.UnitTests;
+
+public class TextFilterTests
+{
+    // TODO: finish the test
+    [Test]
+    public void Test_Filter_WhenNoBannedWords_ShouldReturnOriginalText()
+    {
+        // Arrange
+        string[] bannedWords = new[] { "Home", "Contests", "Programming", "Advanced", "for", "QA", "Exercises" };
+        string text = "go";
+
+        // Act
+        string result = TextFilter.Filter(bannedWords, text);
+
+        // Assert
+        Assert.That(result, Is.EqualTo("go"));
+    }
+
+    [Test]
+    public void Test_Filter_WhenBannedWordExists_ShouldReplaceBannedWordWithAsterisks()
+    {
+        // Arrange
+        string[] bannedWords = new[] { "Home", "Contests", "Programming", "Advanced", "for", "QA", "Exercises" };
+        string text = "QA";
+
+        // Act
+        string result = TextFilter.Filter(bannedWords, text);
+
+        // Assert
+        Assert.That(result, Is.EqualTo("**"));
+    }
+
+    [Test]
+    public void Test_Filter_WhenBannedWordsAreEmpty_ShouldReturnOriginalText()
+    {
+        // Arrange
+        string[] bannedWords = new[] { "Home", "Contests", "Programming", "Advanced", "for", "QA", "Exercises" };
+        string text = string.Empty;
+
+        // Act
+        string result = TextFilter.Filter(bannedWords, text);
+
+        // Assert
+        Assert.That(result, Is.EqualTo(string.Empty));
+    }
+
+    [Test]
+    public void Test_Filter_WhenBannedWordsContainWhitespace_ShouldReplaceBannedWord()
+    {
+        // Arrange
+        string[] bannedWords = new[] { "Hom e", "Contests", "Programming", "Advanced", "for", "QA", "Exercises" };
+        string text = "Home";
+
+        // Act
+        string result = TextFilter.Filter(bannedWords, text);
+
+        // Assert
+        Assert.That(result, Is.EqualTo("Home"));
+    }
+}
