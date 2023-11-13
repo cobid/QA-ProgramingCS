@@ -1,0 +1,57 @@
+using NUnit.Framework;
+
+namespace TestApp.UnitTests;
+
+public class PatternTests
+{
+    
+    [TestCase("qwerty", 2, "qWeRtYqWeRtY")]
+    [TestCase("qwerty", 1, "qWeRtY")]
+    [TestCase("qwerty", 5, "qWeRtYqWeRtYqWeRtYqWeRtYqWeRtY")]
+    public void Test_GeneratePatternedString_ValidInput_ReturnsExpectedResult(string input, 
+        int repetitionFactor, string expected)
+    {
+        // Arrange
+        string text = "qwerty";
+        int count = 2;
+        string textResult = "qWeRtYqWeRtY";
+        // Act
+        string result = Pattern.GeneratePatternedString(input, repetitionFactor);
+
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_GeneratePatternedString_EmptyInput_ThrowsArgumentException()
+    {
+        //Arrange
+        string text = string.Empty;
+        int count = 2;
+        //Act & Assert
+        Assert.That(() => Pattern.GeneratePatternedString(text, count), Throws.ArgumentException);
+
+
+
+    }
+
+    [Test]
+    public void Test_GeneratePatternedString_NegativeRepetitionFactor_ThrowsArgumentException()
+    {
+        ///Arrange
+        string text = string.Empty;
+        int count = -2;
+        //Act & Assert
+        Assert.That(() => Pattern.GeneratePatternedString(text, count), Throws.ArgumentException);
+    }
+
+    [Test]
+    public void Test_GeneratePatternedString_ZeroRepetitionFactor_ThrowsArgumentException()
+    {
+        ////Arrange
+        string text = string.Empty;
+        int count = 0;
+        //Act & Assert
+        Assert.That(() => Pattern.GeneratePatternedString(text, count), Throws.ArgumentException);
+    }
+}
