@@ -1,0 +1,68 @@
+using NUnit.Framework;
+using System;
+
+using System.Collections.Generic;
+
+namespace TestApp.Tests;
+
+public class DrumSetTests
+{
+    [Test]
+    public void Test_Drum_TerminateCommandNotGiven_ThrowsArgumentException()
+    {
+        decimal money = 100;
+        List<int> initialQuality = new List<int>{ 2, 3 };
+        List<string> commands = new List<string> {"1", "1"};
+
+        Assert.That(() => DrumSet.Drum(money, initialQuality, commands), Throws.ArgumentException);
+    }
+
+    [Test]
+    public void Test_Drum_StringGivenAsCommand_ThrowsArgumentException()
+    {
+        decimal money = 100;
+        List<int> initialQuality = new List<int> { 2, 3 };
+        List<string> commands = new List<string> { "1", "string", "Hit it again, Gabsy!" };
+
+        Assert.That(() => DrumSet.Drum(money, initialQuality, commands), Throws.ArgumentException);
+    }
+
+    [Test]
+    public void Test_Drum_ReturnsCorrectQualityAndAmount()
+    {
+        decimal money = 100;
+        List<int> initialQuality = new List<int> { 2, 3 };
+        List<string> commands = new List<string> { "1", "1", "Hit it again, Gabsy!" };
+
+        string result = DrumSet.Drum(money, initialQuality, commands);
+        string expected = "2 1\nGabsy has 94.00lv.";
+
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_Drum_BalanceZero_WithOneDrumLeftOver_ReturnsCorrectQualityAndAmount()
+    {
+        decimal money = 10;
+        List<int> initialQuality = new List<int> { 1, 2 };
+        List<string> commands = new List<string> { "3", "1", "Hit it again, Gabsy!" };
+
+        string result = DrumSet.Drum(money, initialQuality, commands);
+        string expected = "1\nGabsy has 1.00lv.";
+
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_Drum_NotEnoughBalance_RemovesAllDrums_ReturnsCorrectQualityAndAmount()
+    {
+        decimal money = 5;
+        List<int> initialQuality = new List<int> { 1, 2 };
+        List<string> commands = new List<string> { "3", "1", "Hit it again, Gabsy!" };
+
+        string result = DrumSet.Drum(money, initialQuality, commands);
+        string expected = "\nGabsy has 2.00lv.";
+
+        Assert.That(result, Is.EqualTo(expected));
+    }
+}
