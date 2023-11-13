@@ -1,0 +1,19 @@
+using System;
+using NUnit.Framework;
+
+namespace TestApp.Tests;
+
+public class FoldSumTests
+{
+    [TestCase(new int[4] { 1, 1, 1, 1 }, "2 2")]
+    [TestCase(new int[4] { -1, -1, -1, -1 }, "-2 -2")]
+    [TestCase(new int[5] { -1, -1, -1, -1, 1 }, "-2 0")]
+    [TestCase(new int[0] { }, "")]
+    [TestCase(new int[1] {42}, "")]
+    public void Test_FoldArray_ReturnsCorrectString(int[] arr, string expected)
+    {
+        string result = FoldSum.FoldArray(arr);
+        Assert.That(result, Is.EqualTo(expected));
+
+    }
+}
