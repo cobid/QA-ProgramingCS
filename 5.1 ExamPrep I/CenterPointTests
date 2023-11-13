@@ -1,0 +1,87 @@
+using System;
+using NUnit.Framework;
+
+namespace TestApp.Tests;
+
+public class CenterPointTests
+{
+    [Test]
+    public void Test_GetClosest_WhenFirstPointIsCloser_ShouldReturnFirstPoint()
+    {
+        //Arrange
+        double x1 = Math.Abs(2.34);
+        double y1 = Math.Abs(1.34);
+        double x2 = Math.Abs(3.56);
+        double y2 = Math.Abs(7.32);
+
+
+        //Act
+        string result = CenterPoint.GetClosest(x1, y1, x2, y2);
+        //Assert
+        Assert.That(result, Is.EqualTo("(2.34, 1.34)"));
+    }
+
+    [Test]
+    public void Test_GetClosest_WhenSecondPointIsCloser_ShouldReturnSecondPoint()
+    {
+        //Arrange
+        double x1 = 9.34;
+        double y1 = 12.34;
+        double x2 = 3.56;
+        double y2 = 7.32;
+
+
+        //Act
+        string result = CenterPoint.GetClosest(x1, y1, x2, y2);
+        //Assert
+        Assert.That(result, Is.EqualTo("(3.56, 7.32)"));
+    }
+
+    [Test]
+    public void Test_GetClosest_WhenBothPointsHaveEqualDistance_ShouldReturnFirstPoint()
+    {
+        //Arrange
+        double x1 = 9.34;
+        double y1 = 12.34;
+        double x2 = 9.34;
+        double y2 = 12.34;
+
+
+        //Act
+        string result = CenterPoint.GetClosest(x1, y1, x2, y2);
+        //Assert
+        Assert.That(result, Is.EqualTo("(9.34, 12.34)"));
+    }
+
+    [Test]
+    public void Test_GetClosest_WhenFirstPointIsNegative_ShouldReturnFirstPoint()
+    {
+        //Arrange
+        double x1 = -9.34;
+        double y1 = -12.34;
+        double x2 = 8.34;
+        double y2 = 13.34;
+
+
+        //Act
+        string result = CenterPoint.GetClosest(x1, y1, x2, y2);
+        //Assert
+        Assert.That(result, Is.EqualTo("(-9.34, -12.34)"));
+    }
+
+    [Test]
+    public void Test_GetClosest_WhenSecondPointIsNegative_ShouldReturnSecondPoint()
+    {
+        //Arrange
+        double x1 = 9.34;
+        double y1 = 12.34;
+        double x2 = -8.34;
+        double y2 = -13.34;
+
+
+        //Act
+        string result = CenterPoint.GetClosest(x1, y1, x2, y2);
+        //Assert
+        Assert.That(result, Is.EqualTo("(-8.34, -13.34)"));
+    }
+}
