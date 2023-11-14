@@ -1,0 +1,31 @@
+//int[] ints = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+
+//SortedDictionary<int, int> numbers = new();
+
+//foreach (var i in ints)
+//{
+//    int currentNum = i;
+//    if (!numbers.ContainsKey(currentNum))
+//    { 
+//    numbers.Add(i, 1);
+//    }
+//    else 
+//    {
+//        numbers[currentNum]++;
+//    }
+//}
+//foreach (var i in numbers)
+//{
+//    Console.WriteLine("{0} -> {1}", i.Key, i.Value );
+//}
+
+List<int> numbers = Console.ReadLine().Split(" ").Select(int.Parse).ToList();
+
+var occurrences = numbers.GroupBy(x => x).ToDictionary(group => group.Key, group => group.Count());
+
+var sortedNumbers = occurrences.Keys.OrderBy(x => x);
+
+foreach (var number in sortedNumbers)
+{
+    Console.WriteLine($"{number} -> {occurrences[number]}");
+}
