@@ -1,0 +1,24 @@
+List<string> text = Console.ReadLine().ToLower().Split(" ").ToList();
+
+Dictionary<string, int> words = new();
+
+foreach (string word in text)
+{
+    string currentWord = word;
+    if (!words.ContainsKey(currentWord))
+    {
+        words.Add(currentWord, 1); 
+    }
+    else
+    {
+        words[currentWord] = words[currentWord] + 1;    
+    }
+}
+foreach (string word in words.Keys)
+{
+    if (words[word] % 2 == 1)
+    {
+        Console.Write($"{word} ");
+    }
+}
+
