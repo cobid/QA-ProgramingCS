@@ -1,0 +1,3 @@
+List<string> fruits = Console.ReadLine().Split(" ").Where(s => s.Length % 2 == 0).ToList();
+
+fruits.ForEach(fruit => Console.WriteLine($"{fruit} "));
