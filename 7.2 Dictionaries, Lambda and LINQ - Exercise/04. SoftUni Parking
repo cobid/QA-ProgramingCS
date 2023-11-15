@@ -1,0 +1,41 @@
+Dictionary<string, string> registrations = new();
+
+int n = int.Parse(Console.ReadLine());
+
+for (int i = 0; i < n; i++)
+{
+    string[] regParts = Console.ReadLine().Split(" ");
+    string regCommand = regParts[0];
+    string regName = regParts[1];
+    
+
+    if (regCommand == "register")
+    {
+        string regPlate = regParts[2];
+        if (!registrations.ContainsKey(regName))
+        {
+            registrations.Add(regName, regPlate);
+            Console.WriteLine("{0} registered {1} successfully", regName, regPlate);
+        }
+        else
+        {
+            Console.WriteLine("ERROR: already registered with plate number {0}", regPlate);
+        }
+    }
+    else if (regCommand == "unregister")
+    {
+        if (registrations.ContainsKey(regName))
+        {
+            registrations.Remove(regName);
+            Console.WriteLine("{0} unregistered successfully", regName);
+        }
+        else
+        {
+            Console.WriteLine("ERROR: user {0} not found", regName);
+        }
+    }
+}
+foreach (KeyValuePair<string, string> reg in registrations)
+{
+    Console.WriteLine($"{reg.Key} => {reg.Value}");
+}
