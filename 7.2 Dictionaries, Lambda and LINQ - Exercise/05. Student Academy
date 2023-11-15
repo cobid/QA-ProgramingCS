@@ -1,0 +1,25 @@
+Dictionary<string, List<double>> studentGrades = new();    
+
+int n = int.Parse(Console.ReadLine());
+
+for (int i = 0; i < n; i++)
+{
+    string name = Console.ReadLine();
+    double grades = double.Parse(Console.ReadLine());   
+     
+    if (!studentGrades.ContainsKey(name))
+    {
+        studentGrades.Add(name, new() {grades});
+    }
+    else
+    {
+        studentGrades[name].Add(grades);
+        
+    }
+}
+var students = studentGrades.Where(stu => stu.Value.Average() >= 4.5);
+
+foreach (var output in students)
+{
+    Console.WriteLine("{0} -> {1:f2}", output.Key, output.Value.Average());
+}
