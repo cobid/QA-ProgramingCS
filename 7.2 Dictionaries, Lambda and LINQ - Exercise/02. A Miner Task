@@ -1,0 +1,21 @@
+Dictionary<string, int> resourses = new Dictionary<string, int>();
+
+string resourse = Console.ReadLine();
+
+while (resourse != "stop")
+{
+    int quantity = int.Parse(Console.ReadLine());
+    if (!resourses.ContainsKey(resourse))
+    {
+        resourses.Add(resourse, quantity);
+    }
+    else
+    {
+        resourses[resourse] += quantity;
+    }
+    resourse = Console.ReadLine();
+}
+foreach (KeyValuePair<string, int> item in resourses) 
+{
+    Console.WriteLine($"{item.Key} -> {item.Value}");
+}
