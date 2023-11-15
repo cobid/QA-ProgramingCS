@@ -1,0 +1,26 @@
+
+string text = Console.ReadLine();
+
+Dictionary<char, int> keyValuePairs = new();
+
+for (int i = 0; i < text.Length; i++)
+{
+    char letter = text[i];
+    if (letter == ' ')
+    {
+        continue;
+    }
+    if (!keyValuePairs.ContainsKey(letter))
+    {
+        keyValuePairs.Add(letter, 1);
+    }
+    else
+    {
+        keyValuePairs[letter] += 1;
+    }
+}
+foreach (KeyValuePair<char, int> pair in keyValuePairs)
+{
+    Console.WriteLine($"{pair.Key} -> {pair.Value}");
+}
+
