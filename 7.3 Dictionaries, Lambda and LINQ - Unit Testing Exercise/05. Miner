@@ -1,0 +1,48 @@
+using NUnit.Framework;
+
+using System;
+
+namespace TestApp.Tests;
+
+public class MinerTests
+{
+    [Test]
+    public void Test_Mine_WithEmptyInput_ShouldReturnEmptyString()
+    {
+        //Arrange
+        string[] strings = { };
+        string expected = string.Empty; 
+        //Act
+        string result = Miner.Mine(strings);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));   
+    }
+
+    // TODO: finish test
+    [Test]
+    public void Test_Mine_WithMixedCaseResources_ShouldBeCaseInsensitive()
+    {
+        string[] input = { "GOLD 8", "silver 30" };
+        
+
+        // Act
+        string result = Miner.Mine(input);
+
+        // Assert
+        Assert.That(result, Is.EqualTo($"gold -> 8{Environment.NewLine}silver -> 30"));
+
+    }
+
+    [Test]
+    public void Test_Mine_WithDifferentResources_ShouldReturnResourceCounts()
+    {
+        string[] input = { "GOLD 8", "silver 30", "platinium 25", "Gold 12" };
+        string expected = "gold -> 20" + $"{Environment.NewLine}" + "silver -> 30" +
+            $"{Environment.NewLine}" + "platinium -> 25";
+        // Act
+        string result = Miner.Mine(input);
+
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+}
