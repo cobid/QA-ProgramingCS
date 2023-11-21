@@ -1,0 +1,58 @@
+using NUnit.Framework;
+
+using System;
+
+namespace TestApp.Tests;
+
+public class PlantsTests
+{
+    [Test]
+    public void Test_GetFastestGrowing_WithEmptyArray_ShouldReturnEmptyString()
+    {
+        //Arrange
+        string[] input = new string[0];
+        string expected = String.Empty;
+        //Act
+        string result = Plants.GetFastestGrowing(input);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    
+    [Test]
+    public void Test_GetFastestGrowing_WithSinglePlant_ShouldReturnPlant()
+    {
+        string[] input = { "avocado" };
+        
+        //Act
+        string result = Plants.GetFastestGrowing(input);
+        //Assert
+        Assert.That(result, Is.EqualTo($"Plants with 7 letters:{Environment.NewLine}avocado"));
+    }
+
+    [Test]
+    public void Test_GetFastestGrowing_WithMultiplePlants_ShouldReturnGroupedPlants()
+    {
+        string[] input = { "banana", "apple" };
+
+        //Act
+        string result = Plants.GetFastestGrowing(input);
+        //Assert
+        Assert.That(result, Is.EqualTo($"Plants with 5 letters:{Environment.NewLine}apple" +
+            $"{Environment.NewLine}"
+        + $"Plants with 6 letters:{Environment.NewLine}banana"));
+    }
+
+    [Test]
+    public void Test_GetFastestGrowing_WithMixedCasePlants_ShouldBeCaseInsensitive()
+    {
+        string[] input = { "banana", "aPPle" };
+
+        //Act
+        string result = Plants.GetFastestGrowing(input);
+        //Assert
+        Assert.That(result, Is.EqualTo($"Plants with 5 letters:{Environment.NewLine}aPPle" +
+            $"{Environment.NewLine}"
+        + $"Plants with 6 letters:{Environment.NewLine}banana"));
+    }
+}
