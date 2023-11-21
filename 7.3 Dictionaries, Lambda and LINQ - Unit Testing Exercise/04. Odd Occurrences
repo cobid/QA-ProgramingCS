@@ -1,0 +1,66 @@
+using NUnit.Framework;
+
+using System;
+
+namespace TestApp.Tests;
+
+public class OddOccurrencesTests
+{
+    [Test]
+    public void Test_FindOdd_WithEmptyArray_ShouldReturnEmptyString()
+    {
+        //Arrange
+        string[] input = new string[0];
+        string expected = string.Empty;
+        //Act
+        string result = OddOccurrences.FindOdd(input);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+   
+    [Test]
+    public void Test_FindOdd_WithNoOddOccurrences_ShouldReturnEmptyString()
+    {
+        //Arrange
+        string[] input = {"game", "eleven", "Madrid", "game", "eleven", "Madrid" };
+        string expected = string.Empty;
+        //Act
+        string result = OddOccurrences.FindOdd(input);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_FindOdd_WithSingleOddOccurrence_ShouldReturnTheOddWord()
+    {
+        string[] input = { "game", "eleven", "Madrid", "game", "eleven", "Madrid", "hola"};
+        string expected = "hola";
+        //Act
+        string result = OddOccurrences.FindOdd(input);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_FindOdd_WithMultipleOddOccurrences_ShouldReturnAllOddWords()
+    {
+        string[] input = { "game", "game", "madrid", "game", "eleven", "madrid", "hola"};
+        string expected = "game eleven hola";
+        //Act
+        string result = OddOccurrences.FindOdd(input);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_FindOdd_WithMixedCaseWords_ShouldBeCaseInsensitive()
+    {
+        string[] input = { "GamE", "elEven", "madrId", "hOla" };
+        string expected = "game eleven madrid hola";
+        //Act
+        string result = OddOccurrences.FindOdd(input);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+}
