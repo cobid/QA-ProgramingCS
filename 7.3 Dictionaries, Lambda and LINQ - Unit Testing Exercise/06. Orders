@@ -1,0 +1,60 @@
+using System;
+using NUnit.Framework;
+
+namespace TestApp.Tests;
+
+public class OrdersTests
+{
+    [Test]
+    public void Test_Order_WithEmptyInput_ShouldReturnEmptyString()
+    {
+        string[] input = new string[] { };
+        string expected = string.Empty; 
+
+        string actual = Orders.Order(input);    
+
+        Assert.That(actual, Is.EqualTo(expected));  
+    }
+
+  
+    [Test]
+    public void Test_Order_WithMultipleOrders_ShouldReturnTotalPrice()
+    {
+        string[] input =  {"apple 2.85 2.095", "banana 1.0 3.75", "orange 0.99 2.0" };
+        
+
+        string actual = Orders.Order(input);
+
+        // Assert
+        Assert.That(actual, Is.EqualTo($"apple -> 5.97{Environment.NewLine}" +
+            $"banana -> 3.75{Environment.NewLine}orange -> 1.98"));
+    }
+
+    [Test]
+    public void Test_Order_WithRoundedPrices_ShouldReturnTotalPrice()
+    {
+        string[] input = { "apple 2.85 2.095", "banana 1.0 1.200",
+            "orange 0.99 2.0", "banana 2.0 3.800" };
+
+
+        string actual = Orders.Order(input);
+
+        // Assert
+        Assert.That(actual, Is.EqualTo($"apple -> 5.97{Environment.NewLine}" +
+            $"banana -> 10.00{Environment.NewLine}orange -> 1.98"));
+    }
+
+    [Test]
+    public void Test_Order_WithDecimalQuantities_ShouldReturnTotalPrice()
+    {
+        string[] input = { "apple 3.50 2.000", "banana 1.00 1.200",
+            "orange 0.99 3.000", "banana 2.0 3.800", "orange 1.99 2.000" };
+
+
+        string actual = Orders.Order(input);
+
+        // Assert
+        Assert.That(actual, Is.EqualTo($"apple -> 7.00{Environment.NewLine}" +
+            $"banana -> 10.00{Environment.NewLine}orange -> 9.95"));
+    }
+}
