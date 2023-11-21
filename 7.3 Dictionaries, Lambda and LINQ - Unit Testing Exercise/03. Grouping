@@ -1,0 +1,76 @@
+using NUnit.Framework;
+
+using System;
+using System.Collections.Generic;
+
+namespace TestApp.Tests;
+
+public class GroupingTests
+{
+    // TODO: finish test
+    [Test]
+    public void Test_GroupNumbers_WithEmptyList_ShouldReturnEmptyString()
+    {
+        // Arrange
+        List<int> list = new List<int>();
+        
+        string expected = string.Empty;
+        // Act
+        string result = Grouping.GroupNumbers(list);
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_GroupNumbers_WithEvenAndOddNumbers_ShouldReturnGroupedString()
+    {
+        List<int> list = new() { 5, 4, 8 ,9 ,2, 1};
+
+        string expected = "Odd numbers: 5, 9, 1" +
+           $"{Environment.NewLine}" + "Even numbers: 4, 8, 2";
+        // Act
+        string result = Grouping.GroupNumbers(list);
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+
+    }
+
+    [Test]
+    public void Test_GroupNumbers_WithOnlyEvenNumbers_ShouldReturnGroupedString()
+    {
+        List<int> list = new() { 4, 8, 2 };
+
+        string expected = "Even numbers: 4, 8, 2";
+        // Act
+        string result = Grouping.GroupNumbers(list);
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+
+    }
+
+    [Test]
+    public void Test_GroupNumbers_WithOnlyOddNumbers_ShouldReturnGroupedString()
+    {
+        List<int> list = new() { 5, 9, 1 };
+
+        string expected = "Odd numbers: 5, 9, 1";
+        // Act
+        string result = Grouping.GroupNumbers(list);
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+
+    }
+
+    [Test]
+    public void Test_GroupNumbers_WithNegativeNumbers_ShouldReturnGroupedString()
+    {
+        List<int> list = new() { -5, -4, -8, -9, -2, -1 };
+
+        string expected = "Odd numbers: -5, -9, -1" +
+            $"{Environment.NewLine}" + "Even numbers: -4, -8, -2";
+        // Act
+        string result = Grouping.GroupNumbers(list);
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+}
