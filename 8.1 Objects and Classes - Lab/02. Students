@@ -1,0 +1,41 @@
+namespace _02._Students
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            List<Student> list = new List<Student>();
+            while (input != "end")
+            {
+                string[] data = input.Split(" ").ToArray();
+                string firstName = data[0];
+                string lastName = data[1];
+                int age = int.Parse(data[2]);
+                string homeTown = data[3];
+
+                Student current = new Student
+                {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Age = age,
+                    HomeTown = homeTown
+                };
+                list.Add(current);
+
+                input = Console.ReadLine();
+            }
+            string town = Console.ReadLine();
+            List<Student> students = list.Where(x => x.HomeTown == town).ToList();
+            students.ForEach(students 
+                => Console.WriteLine($"{students.FirstName} {students.LastName} is {students.Age} years old."));
+        }
+    }
+    public class Student
+    {
+      public  string FirstName { get; set; }
+       public string LastName { get; set; }
+       public int Age { get; set; }
+       public string HomeTown { get; set; }
+    }
+}
