@@ -1,0 +1,82 @@
+using static _04._Vehicle_Catalogue.Program;
+
+namespace _04._Vehicle_Catalogue
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            Catalog catalog = new Catalog();
+
+            while (input != "end")
+            {
+                string[] data = input.Split("/").ToArray();
+                string type = data[0];
+                string brand = data[1];
+                string model = data[2];
+                if (type == "Car")
+                {
+                    int horsePower = int.Parse(data[3]);
+                    Car currentCar = new Car(brand, model, horsePower);
+                    catalog.carsCatalog.Add(currentCar);
+                }
+                else if (type == "Truck")
+                {
+                    int weight = int.Parse(data[3]);
+                    Truck currentTruck = new Truck(brand, model, weight);
+                    catalog.trucksGatalog.Add(currentTruck);
+                }
+
+                input = Console.ReadLine();
+            }
+
+
+            if (catalog.carsCatalog.Count > 0)
+            {
+                List<Car> addCars = catalog.carsCatalog.OrderBy(x => x.Brand).ToList();
+                Console.WriteLine("Cars:");
+                addCars.ForEach(x => Console.WriteLine($"{x.Brand}: {x.Model} - {x.HorsePower}hp"));
+               
+            }
+            if (catalog.trucksGatalog.Count > 0)
+            {
+                List<Truck> addTrucks = catalog.trucksGatalog.OrderBy(x => x.Brand).ToList();
+                Console.WriteLine("Trucks:");
+                addTrucks.ForEach(x => Console.WriteLine($"{x.Brand}: {x.Model} - {x.Weight}kg"));
+                
+            }
+        }
+        public class Truck
+        {
+            public Truck(string brand, string model, int weight)
+            {
+                Brand = brand;
+                Model = model;
+                Weight = weight;
+            }
+            public string Brand { get; set; }
+            public string Model { get; set; }
+            public int Weight { get; set; }
+        }
+        public class Car
+        {
+            public Car(string brand, string model, int horsePower)
+            {
+                Brand = brand;
+                Model = model;
+                HorsePower = horsePower;
+            }
+
+
+            public string Brand { get; set; }
+            public string Model { get; set; }
+            public int HorsePower { get; set; }
+        }
+        public class Catalog
+        {
+            public List<Car> carsCatalog = new List<Car>();
+            public List<Truck> trucksGatalog = new List<Truck>();
+        }
+    }
+}
