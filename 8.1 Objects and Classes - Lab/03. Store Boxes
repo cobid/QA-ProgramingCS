@@ -1,0 +1,62 @@
+namespace _03._Store_Boxes
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+
+            List<Box> boxes = new List<Box>();  
+            List<Item> items = new List<Item>();    
+
+            while (input != "end")
+            {
+                string[] data = input.Split(" ");
+                string id = data[0];
+                string item = data[1];
+                int quantity = int.Parse(data[2]);
+                decimal price = decimal.Parse(data[3]); 
+
+                Item currentItem = new Item()
+                {
+                    Name = item,
+                    Price = price,
+
+                };
+                items.Add(currentItem);
+
+                Box currentBox = new Box()
+                {
+                    SerialNumber = id,
+                    Item = item,
+                    ItemQuantity = quantity,
+                    PriceForABox = price
+                };
+                boxes.Add(currentBox);
+                
+                
+                input = Console.ReadLine();
+            }
+            List<Box> total = boxes.OrderByDescending(x => x.PriceForABox * x.ItemQuantity).ToList();
+            foreach (var item in total)
+            {
+                Console.WriteLine($"{item.SerialNumber}");
+                Console.WriteLine($"-- {item.Item} - ${item.PriceForABox:f2}: {item.ItemQuantity}");
+                Console.WriteLine($"-- ${item.ItemQuantity * item.PriceForABox:f2}");
+                
+            } 
+        }
+    }
+    public class Item
+    {
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+    }
+    public class Box
+    {
+        public string SerialNumber { get; set; }
+        public string Item { get; set; }
+        public int ItemQuantity { get; set; }
+        public decimal PriceForABox{ get; set; }
+    }
+}
