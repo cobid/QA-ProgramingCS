@@ -1,0 +1,105 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.ConstrainedExecution;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CarManufacturer
+{
+    public class Car
+    {
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public int Year { get; set; }
+        public double FuelQuantity { get; set; }
+        public double FuelConsumption { get; set; }
+        public Engine Engine { get; set; }
+
+        public Tire[] Tyres = new Tire[0];
+
+        public void Drive(double distance)
+        {
+            double totalConsumption = distance * FuelConsumption;
+            if (FuelQuantity - totalConsumption > 0)
+            {
+                FuelQuantity -= totalConsumption;
+            }
+            else
+            {
+                Console.WriteLine("Not enough fuel to perform this trip!");
+            }
+        }
+        public string WhoAmI()
+        {
+            return $"Make: {Make}\nModel: {Model}\nYear: {Year}\nFuel: {FuelQuantity:F2}";
+        }
+        public Car()
+        {
+            Make = "VW";
+            Model = "Golf";
+            Year = 2025;
+            FuelQuantity = 200;
+            FuelConsumption = 10;
+        }
+        public Car(string make, string model, int year) : this()
+        {
+            Make = make;
+            Model = model;
+            Year = year;
+        }
+        public Car(string make, string model, int year, double fuelQuantity, double fuelConsumption)
+            : this(make, model, year)
+        {
+            FuelQuantity = fuelQuantity;
+            FuelConsumption = fuelConsumption;
+        }
+        public Car(string make, string model, int year, double fuelQuantity, double fuelConsumption,
+            Engine engine, Tire[] tyres) : this(make, model, year, fuelQuantity, fuelConsumption)
+        {
+            this.Engine = engine;
+            this.Tyres = tyres;
+        }   
+    }
+    public class Engine
+    {
+        public int HorsePower { get; set; }
+        public double CubicCapacity { get; set; }
+        public Engine(int horsePower, double cubicCapacity)
+        {
+            this.HorsePower = horsePower;
+            this.CubicCapacity = cubicCapacity; 
+        }
+        
+    }
+    public class Tire
+    {
+        public int Year { get; set; }
+        public double Pressure { get; set; }
+        public Tire(int year, double pressure)
+        {
+            this.Year = year;
+            this.Pressure = pressure;   
+        }
+    }
+}
+namespace CarManufacturer
+{
+    public class StartUp
+    {
+        static void Main()
+        {
+            string make = Console.ReadLine();
+            string model = Console.ReadLine();
+            int year = int.Parse(Console.ReadLine());
+            double fuelQuantity = double.Parse(Console.ReadLine());
+            double fuelConsumption = double.Parse(Console.ReadLine());
+
+            Car firstCar = new Car();
+            Car secondCar = new Car(make, model, year);
+            Car thirdCar = new Car(make, model, year, fuelQuantity, fuelConsumption);
+        }
+    }
+}
+            
+
