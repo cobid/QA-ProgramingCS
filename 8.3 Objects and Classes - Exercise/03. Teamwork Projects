@@ -1,0 +1,88 @@
+namespace _03._Teamwork_Projects
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, Team> teams = new(); 
+            int n = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < n; i++)
+            {
+                string[] inputTeams = Console.ReadLine().Split("-");
+                string creator = inputTeams[0];
+                string teamName = inputTeams[1];
+
+                if (teams.ContainsKey(teamName))
+                {
+                    Console.WriteLine($"Team {teamName} was already created!");
+                }
+                else if (teams.Any(t => t.Value.CreatorName == creator))
+                {
+                    Console.WriteLine($"{creator} cannot create another team!");
+                }
+                else
+                {
+                    Team team = new Team(creator, teamName);
+                    Console.WriteLine($"Team {teamName} has been created by {creator}!");
+                    teams.Add(teamName, team);
+                }
+            }
+            string input = Console.ReadLine();
+            while (input != "end of assignment")
+            {
+                string member = input.Split("->")[0];
+                string teamForMember = input.Split("->")[1];
+                if (!teams.ContainsKey(teamForMember))
+                {
+                    Console.WriteLine($"Team {teamForMember} does not exist!");
+                }
+                else if (teams.Any(t => t.Value.CreatorName == member || t.Value.Members.Contains(member)))
+                {
+                    Console.WriteLine($"Member {member} cannot join team {teamForMember}!");
+                }
+                else
+                {
+                    teams[teamForMember].Members.Add(member);
+                    //Console.WriteLine($"Member {member} joined team {teamForMember}!");
+                }
+                input = Console.ReadLine();
+            }
+            foreach(var team in teams.Where(team => team.Value.Members.Count > 0)
+                .OrderByDescending(x => x.Value.Members.Count)
+                .ThenBy(x => x.Key).ToDictionary(x => x.Key, x => x.Value))
+            {
+                Console.WriteLine(team.Key);
+                Console.WriteLine("- " + team.Value.CreatorName);
+
+                foreach (var member in team.Value.Members.OrderBy(x=>x))
+                {
+                    Console.WriteLine("-- " + member);
+                }
+            }
+            Console.WriteLine("Teams to disband:");
+            foreach (var team in teams.Where(team => team.Value.Members.Count == 0)){
+                Console.WriteLine(team.Key);    
+            }
+        }
+    }
+}
+namespace _03._Teamwork_Projects
+{
+    internal class Team
+    {
+        private string creatorName;
+        private string teamName;
+        private List<string> members;
+
+        public string TeamName { get; set; }
+        public string CreatorName { get; set; }
+        public List<string> Members { get; set; }
+        public Team(string creatorName, string teamName)
+        {
+            CreatorName = creatorName;
+            TeamName = teamName;
+            Members = new List<string>();   
+        }
+    }
+}
