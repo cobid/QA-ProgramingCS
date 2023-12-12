@@ -1,0 +1,115 @@
+using NUnit.Framework;
+using System;
+using System.Diagnostics;
+using System.Xml.Linq;
+using TestApp.Product;
+
+namespace TestApp.Tests;
+
+[TestFixture]
+public class ProductInventoryTests
+{
+    private ProductInventory _inventory = null!;
+    
+    [SetUp]
+    public void SetUp()
+    {
+        this._inventory = new();
+    }
+    
+    [Test]
+    public void Test_AddProduct_ProductAddedToInventory()
+    {
+        // Arrange
+        string product = "Melon";
+        double price = 2.00;
+        int quantity = 1;
+        string expected = $"Product Inventory:{Environment.NewLine}" +
+            $"{product} - Price: ${price:f2} - Quantity: {quantity}";
+        // Act
+        this._inventory.AddProduct(product, price, quantity);
+        string result = this._inventory.DisplayInventory(); 
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+        
+    }
+
+    [Test]
+    public void Test_DisplayInventory_NoProducts_ReturnsEmptyString()
+    {
+        // Arrange 
+        string expected = "Product Inventory:";
+        // Act
+        string result = this._inventory.DisplayInventory();
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_DisplayInventory_WithProducts_ReturnsFormattedInventory()
+    {
+        // Arrange
+        string productFirst = "Melon";
+        double priceFirst = 2.00;
+        int quantityFirst = 1;
+
+        string productSecond = "Water";
+        double priceSecond = 0.50;
+        int quantitySecond = 4;
+
+        string productThird = "Bread";
+        double priceThird = 1.00;
+        int quantityThird = 2;
+        
+        string expected = $"Product Inventory:{Environment.NewLine}" +
+            $"{productFirst} - Price: ${priceFirst:f2} - Quantity: {quantityFirst}{Environment.NewLine}" +
+            $"{productSecond} - Price: ${priceSecond:f2} - Quantity: {quantitySecond}{Environment.NewLine}" +
+            $"{productThird} - Price: ${priceThird:f2} - Quantity: {quantityThird}";
+        // Act
+        this._inventory.AddProduct(productFirst, priceFirst, quantityFirst);
+        this._inventory.AddProduct(productSecond, priceSecond, quantitySecond);
+        this._inventory.AddProduct(productThird, priceThird, quantityThird);
+
+        string result = this._inventory.DisplayInventory();
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_CalculateTotalValue_NoProducts_ReturnsZero()
+    {
+        // Arrange 
+        double expected = 0.00;
+        // Act
+        double result = this._inventory.CalculateTotalValue();
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_CalculateTotalValue_WithProducts_ReturnsTotalValue()
+    {
+        // Arrange
+        string productFirst = "Melon";
+        double priceFirst = 2.00;
+        int quantityFirst = 1;
+
+        string productSecond = "Water";
+        double priceSecond = 0.50;
+        int quantitySecond = 4;
+
+        string productThird = "Bread";
+        double priceThird = 1.00;
+        int quantityThird = 2;
+
+        double expected = 6.00;
+        // Act
+        this._inventory.AddProduct(productFirst, priceFirst, quantityFirst);
+        this._inventory.AddProduct(productSecond, priceSecond, quantitySecond);
+        this._inventory.AddProduct(productThird, priceThird, quantityThird);
+
+        double result = this._inventory.CalculateTotalValue();  
+        // Assert
+        Assert.That (result, Is.EqualTo(expected)); 
+    }
+}
