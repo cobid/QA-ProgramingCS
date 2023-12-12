@@ -1,0 +1,72 @@
+using NUnit.Framework;
+
+namespace TestApp.Tests;
+
+[TestFixture]
+public class StringRotatorTests
+{
+    [Test]
+    public void Test_RotateRight_EmptyString_ReturnsEmptyString()
+    {
+        //Arrange
+        string inputString = string.Empty;
+        int positions = 2;
+        string expected = string.Empty; 
+       //Act
+       string result = StringRotator.RotateRight(inputString, positions);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_RotateRight_RotateByZeroPositions_ReturnsOriginalString()
+    {
+        //Arrange
+        string inputString = "12345";
+        int positions = 0;
+        string expected = "12345";
+        //Act
+        string result = StringRotator.RotateRight(inputString, positions);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_RotateRight_RotateByPositivePositions_ReturnsRotatedString()
+    {
+        //Arrange
+        string inputString = "12345";
+        int positions = 3;
+        string expected = "34512";
+        //Act
+        string result = StringRotator.RotateRight(inputString, positions);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_RotateRight_RotateByNegativePositions_ReturnsRotatedString()
+    {
+        //Arrange
+        string inputString = "12345";
+        int positions = -4;
+        string expected = "23451";
+        //Act
+        string result = StringRotator.RotateRight(inputString, positions);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_RotateRight_RotateByMorePositionsThanStringLength_ReturnsRotatedString()
+    {
+        //Arrange
+        string inputString = "12345";
+        int positions = 12;
+        string expected = "45123";
+        //Act
+        string result = StringRotator.RotateRight(inputString, positions);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+}
