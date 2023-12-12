@@ -1,0 +1,114 @@
+using System.Collections.Generic;
+
+using NUnit.Framework;
+
+namespace TestApp.Tests;
+
+[TestFixture]
+public class DictionaryIntersectionTests
+{
+    [Test]
+    public void Test_Intersect_TwoEmptyDictionaries_ReturnsEmptyDictionary()
+    {
+        // Arrange
+        Dictionary<string, int> dictOne = new Dictionary<string, int>();
+        Dictionary<string, int> dictTwo = new Dictionary<string, int>();
+        
+        // Act
+        Dictionary<string, int> result = DictionaryIntersection.Intersect(dictOne, dictTwo);
+        // Assert
+        Assert.That(result, Is.Empty);
+
+    }
+
+    [Test]
+    public void Test_Intersect_OneEmptyDictionaryAndOneNonEmptyDictionary_ReturnsEmptyDictionary()
+    {
+        // Arrange
+        Dictionary<string, int> dictOne = new()
+        {
+            {"one", 1},
+            {"two", 2},
+        };
+        Dictionary<string, int> dictTwo = new Dictionary<string, int>();
+       
+        // Act
+        Dictionary<string, int> result = DictionaryIntersection.Intersect(dictOne, dictTwo);
+        // Assert
+        Assert.That(result, Is.Empty);
+    }
+
+    [Test]
+    public void Test_Intersect_TwoNonEmptyDictionariesWithNoCommonKeys_ReturnsEmptyDictionary()
+    {
+        // Arrange
+        Dictionary<string, int> dictOne = new()
+        {
+            {"one", 1},
+            {"two", 2},
+        };
+        Dictionary<string, int> dictTwo = new()
+        {
+            {"nine", 9},
+            {"ten", 10},
+        };
+       
+        // Act
+        Dictionary<string, int> result = DictionaryIntersection.Intersect(dictOne, dictTwo);
+        // Assert
+        Assert.That(result, Is.Empty);
+    }
+
+    [Test]
+    public void Test_Intersect_TwoNonEmptyDictionariesWithCommonKeysAndValues_ReturnsIntersectionDictionary()
+    {
+        // Arrange
+        Dictionary<string, int> dictOne = new()
+        {
+            {"one", 1},
+            {"two", 2},
+            {"three", 3},
+        };
+        Dictionary<string, int> dictTwo = new()
+        {
+            {"three", 3},
+            {"nine", 9},
+            {"ten", 10},
+        };
+        Dictionary<string, int> expected = new()
+        {
+            {"three", 3 }
+        };
+        // Act
+        Dictionary<string, int> result = DictionaryIntersection.Intersect(dictOne, dictTwo);
+        // Assert
+        Assert.That(expected, Is.Not.Null);
+        Assert.That(result, Is.EqualTo(expected));
+        
+    }
+
+    [Test]
+    public void Test_Intersect_TwoNonEmptyDictionariesWithCommonKeysAndDifferentValues_ReturnsEmptyDictionary()
+    {
+        // Arrange
+        Dictionary<string, int> dictOne = new()
+        {
+            {"one", 1},
+            {"two", 2},
+            {"three", 3},
+        };
+        Dictionary<string, int> dictTwo = new()
+        {   
+            {"one", 10},
+            {"two", 220},
+            {"three", 30},
+        };
+        Dictionary<string, int> expected = new();
+        
+        // Act
+        Dictionary<string, int> result = DictionaryIntersection.Intersect(dictOne, dictTwo);
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
+        Assert.IsTrue(result.Count == 0);
+    }
+}
