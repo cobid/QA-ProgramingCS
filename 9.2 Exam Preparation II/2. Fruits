@@ -1,0 +1,82 @@
+
+using System.Collections.Generic;
+
+using NUnit.Framework;
+
+namespace TestApp.Tests;
+
+[TestFixture]
+public class FruitsTests
+{
+    [Test]
+    public void Test_GetFruitQuantity_FruitExists_ReturnsQuantity()
+    {
+        //Arrange
+        Dictionary<string, int> keyValuePairs = new Dictionary<string, int>
+        {
+            {"apple", 1},
+            {"banana", 5 }
+        };
+        string fruit = "banana";
+        //Act
+        int result = Fruits.GetFruitQuantity(keyValuePairs, fruit);
+        //Assert
+        Assert.That(result, Is.EqualTo(5));
+    }
+
+    [Test]
+    public void Test_GetFruitQuantity_FruitDoesNotExist_ReturnsZero()
+    {
+        //Arrange
+        Dictionary<string, int> keyValuePairs = new Dictionary<string, int>
+        {
+            {"apple", 1},
+            {"banana", 5 }
+        };
+        string fruit = "orange";
+        //Act
+        int result = Fruits.GetFruitQuantity(keyValuePairs, fruit);
+        //Assert
+        Assert.That(result, Is.EqualTo(0));
+    }
+
+    [Test]
+    public void Test_GetFruitQuantity_EmptyDictionary_ReturnsZero()
+    {
+        //Arrange
+        Dictionary<string, int> keyValuePairs = new Dictionary<string, int>();
+        string fruit = "orange";
+        //Act
+        int result = Fruits.GetFruitQuantity(keyValuePairs, fruit);
+        //Assert
+        Assert.That(result, Is.EqualTo(0));
+    }
+
+    [Test]
+    public void Test_GetFruitQuantity_NullDictionary_ReturnsZero()
+    {
+        //Arrange
+        Dictionary<string, int>? keyValuePairs = null;
+        string fruit = "orange";
+        //Act
+        int result = Fruits.GetFruitQuantity(keyValuePairs, fruit);
+        //Assert
+        Assert.That(result, Is.EqualTo(0));
+    }
+
+    [Test]
+    public void Test_GetFruitQuantity_NullFruitName_ReturnsZero()
+    {
+        //Arrange
+        Dictionary<string, int> keyValuePairs = new Dictionary<string, int>
+        {
+            {"apple", 1},
+            {"banana", 5 }
+        };
+        string? fruit = null;
+        //Act
+        int result = Fruits.GetFruitQuantity(keyValuePairs, fruit);
+        //Assert
+        Assert.That(result, Is.EqualTo(0));
+    }
+}
