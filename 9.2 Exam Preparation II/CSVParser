@@ -1,0 +1,58 @@
+using NUnit.Framework;
+using System;
+
+namespace TestApp.Tests;
+
+[TestFixture]
+public class CsvParserTests
+{
+    [Test]
+    public void Test_ParseCsv_EmptyInput_ReturnsEmptyArray()
+    {
+        //Arrange
+        string input = "";
+        string[] exspected = Array.Empty<string>();
+        //Act
+        string[] result = CsvParser.ParseCsv(input);
+        //Assert
+        Assert.That(result, Is.EqualTo(exspected));
+
+    }
+
+    [Test]
+    public void Test_ParseCsv_SingleField_ReturnsArrayWithOneElement()
+    {
+        //Arrange
+        string input = "a";
+        string[] expected = { "a" };
+        //Act
+        string[] result = CsvParser.ParseCsv(input);
+        //Assert
+        Assert.That(result, Is.EqualTo (expected));
+        
+    }
+
+    [Test]
+    public void Test_ParseCsv_MultipleFields_ReturnsArrayWithMultipleElements()
+    {
+        //Arrange
+        string input = "abs,data,more";
+        string[] expected = { "abs", "data", "more" };
+        //Act
+        string[] result = CsvParser.ParseCsv(input);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Test_ParseCsv_TrimsWhiteSpace_ReturnsCleanArray()
+    {
+        //Arrange
+        string input = "        more";
+        string[] expected = {"more" };
+        //Act
+        string[] result = CsvParser.ParseCsv(input);
+        //Assert
+        Assert.That(result, Is.EqualTo(expected));
+    }
+}
