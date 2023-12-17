@@ -1,0 +1,86 @@
+using System;
+
+using NUnit.Framework;
+
+using TestApp.Todo;
+
+namespace TestApp.Tests;
+
+[TestFixture]
+public class ToDoListTests
+{
+    private ToDoList _toDoList = null!;
+    
+    [SetUp]
+    public void SetUp()
+    {
+        this._toDoList = new();
+    }
+    
+    [Test]
+    public void Test_AddTask_TaskAddedToToDoList()
+    {
+        //Arrange
+        string task = "first task";
+        DateTime date = DateTime.Today;
+        this._toDoList.AddTask(task, date); 
+        //Act
+        string result = this._toDoList.DisplayTasks();
+        //Assert
+        Assert.That(result, Does.Contain("[ ] first task - Due: "));
+
+    }
+
+    [Test]
+    public void Test_CompleteTask_TaskMarkedAsCompleted()
+    {
+        //Arrange
+        string task = "first task";
+        DateTime date = DateTime.Today;
+        this._toDoList.AddTask(task, date);
+        this._toDoList.CompleteTask(task);
+        //Act
+        string result = this._toDoList.DisplayTasks();
+        //Assert
+        Assert.That(result, Does.Contain("[✓] first task - Due: "));
+    }
+
+    [Test]
+    public void Test_CompleteTask_TaskNotFound_ThrowsArgumentException()
+    {
+        //Arrange
+        string task = "first task";
+      
+      
+        //Assert
+        Assert.That(() => this._toDoList.CompleteTask(task), Throws.ArgumentException );
+    }
+
+    [Test]
+    public void Test_DisplayTasks_NoTasks_ReturnsEmptyString()
+    {
+       
+        //Act
+        string result = this._toDoList.DisplayTasks();
+        //Assert
+        Assert.That(result, Is.EqualTo("To-Do List:"));
+    }
+
+    [Test]
+    public void Test_DisplayTasks_WithTasks_ReturnsFormattedToDoList()
+    {
+        //Arrange
+        string task = "first task";
+        DateTime date = DateTime.Today;
+        this._toDoList.AddTask(task, date);
+        string task2 = "second task";
+        DateTime date2 = DateTime.Today;
+        this._toDoList.AddTask(task2, date2);
+        this._toDoList.CompleteTask(task2);
+        //Act
+        string result = this._toDoList.DisplayTasks();
+        //Assert
+        Assert.That(result, Does.Contain("[ ] first task - Due: "));
+        Assert.That(result, Does.Contain("[✓] second task - Due: "));
+    }
+}
